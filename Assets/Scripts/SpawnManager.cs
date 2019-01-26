@@ -32,11 +32,11 @@ public class SpawnManager : MonoBehaviour
             if(waveIndex < waves.Count && Time.time > lastSpawn + waves[waveIndex].Cooldown)
             {
                 lastSpawn = Time.time;
-                numOfAlive += 1;
                 waves[waveIndex].Count -= 1;
                 if(waves[waveIndex].Count >= 0)
                 {
                     Instantiate(humanPrefab, gameObject.transform.position, gameObject.transform.rotation);
+                    numOfAlive += 1;
                 }
                 else
                 {
