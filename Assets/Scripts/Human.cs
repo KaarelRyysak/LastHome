@@ -10,6 +10,7 @@ public class Human : MonoBehaviour {
 
 	Room currentRoom;
 	House house;
+	Trust trust;
 	State state = State.Idle;
 
 	public float speed, patience;
@@ -17,6 +18,7 @@ public class Human : MonoBehaviour {
 
 	void Start() {
 		house = House.instance;
+		trust = Trust.instance;
 		currentRoom = house.StartRoom;
 
 		StartCoroutine(AI());
@@ -44,11 +46,13 @@ public class Human : MonoBehaviour {
 			float waitEnd = Time.time + patience;
 
 			while (!door.open && Time.time < waitEnd) {
+				trust.Value -= 10 * Time.deltaTime;
 				yield return null;
 			}
 			if (!door.open) { //Out of patience
-				//TODO: Remove trust
 				yield break;
+			} else {
+				trust.Value += 1;
 			}
 
 			yield return LerpMove(transform.position, Vector3.Lerp(currentRoom.transform.position, room.transform.position, 0.6f));
