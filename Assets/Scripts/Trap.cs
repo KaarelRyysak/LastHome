@@ -40,7 +40,7 @@ public class Trap : MonoBehaviour
             spriteRenderer.sprite = disabledSprite;
         }
     }
-
+    
 
     private void OnTriggerStay2D(Collider2D collision)
     {
