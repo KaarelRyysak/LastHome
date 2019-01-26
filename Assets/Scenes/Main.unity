@@ -555,16 +555,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fa091f0321f89d418ab6bd68ff78ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  humanPrefab: {fileID: 6182269447906010937, guid: b3329cbf5e6015447a472db5f38ac811,
-    type: 3}
-  waves:
-  - Count: 4
-    Cooldown: 5
-  - Count: 6
-    Cooldown: 5
-  - Count: 8
-    Cooldown: 10
-  numOfAlive: 0
 --- !u!4 &1434999418
 Transform:
   m_ObjectHideFlags: 0
