@@ -75,6 +75,8 @@ public class Human : MonoBehaviour {
 	public void Die() {
 		Instantiate(corpse, gameObject.transform.position, corpse.transform.rotation);
 
+        SpawnManager.instance.numOfAlive -= 1;
+
 		Destroy(gameObject);
 	}
 }
