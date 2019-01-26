@@ -2,43 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
-{
-    public bool open;
-    public Sprite openSprite;
-    public Sprite closedSprite;
-    private SpriteRenderer spriteRenderer;
+public class Door : MonoBehaviour {
+	public bool open = false; //Closed on startup
+	public Sprite openSprite;
+	public Sprite closedSprite;
+	private SpriteRenderer spriteRenderer;
 
+	void Awake() {
+		spriteRenderer = GetComponent<SpriteRenderer>();
+		spriteRenderer.sprite = closedSprite;
+	}
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        spriteRenderer = this.GetComponent<SpriteRenderer>();
+	private void OnMouseDown() {
+		//Toggle active on click
+		open = !open;
 
-        //Inactive on startup
-        open = false;
-        spriteRenderer.sprite = closedSprite;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnMouseDown()
-    {
-        //Toggle active on click
-        open = !open;
-
-        //Change sprite
-        if (open)
-        {
-            spriteRenderer.sprite = openSprite;
-        }
-        else
-        {
-            spriteRenderer.sprite = closedSprite;
-        }
-    }
+		//Change sprite
+		if (open) {
+			spriteRenderer.sprite = openSprite;
+		} else {
+			spriteRenderer.sprite = closedSprite;
+		}
+	}
 }

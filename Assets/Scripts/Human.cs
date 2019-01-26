@@ -34,8 +34,8 @@ public class Human : MonoBehaviour {
 	}
 
 	IEnumerator PathToRoom() {
-		Room target = house.GetRandomRoom();
-		List<Room> path = house.GetClosedPath(currentRoom, target);
+		Room target = house.RandomRoom;
+		List<Room> path = house.GetPath(currentRoom, target, false);
 
 		foreach (Room room in path) {
 			yield return LerpMove(transform.position, room.transform.position);

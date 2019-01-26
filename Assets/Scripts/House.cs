@@ -15,6 +15,7 @@ public class House : MonoBehaviour {
 	Dictionary<Door, Pair<Room>> doorToRooms = new Dictionary<Door, Pair<Room>>();
 
 	public Room StartRoom => rooms[startY, startX];
+	public Room RandomRoom => rooms[Random.Range(0, height), Random.Range(0, width)];
 	public Vector2Int[] doors; //(x, y) coordinates of rooms. 2 consecutive define a door
 	public Vector2Int[] walls; //(x, y) coordinates of rooms. 2 consecutive define a door
 
@@ -55,11 +56,7 @@ public class House : MonoBehaviour {
 		}
 	}
 
-	public Room GetRandomRoom() {
-		return rooms[Random.Range(0, height), Random.Range(0, width)];
-	}
-
-	public List<Room> GetClosedPath(Room from, Room to) {
+	public List<Room> GetPath(Room from, Room to, bool respectDoors) {
 		List<Room> path = new List<Room>();
 
 		if (from == to) {
@@ -75,6 +72,10 @@ public class House : MonoBehaviour {
 				Room current = thisIteration[i];
 
 				foreach (Room adjacent in current.neighbors) { //Check all rooms that are n+1 rooms away
+					if (respectDoors && !roomsToDoor[new Pair<Room>(current, adjacent)].open) {
+						continue; //No pathing through closed doors when respecting doors
+					}
+
 					if (adjacent == to) {
 						path.Add(adjacent);
 						while (current != from) { //Follow the path back to start
