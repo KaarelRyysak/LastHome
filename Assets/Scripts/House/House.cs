@@ -52,7 +52,7 @@ public class House : MonoBehaviour {
 			Room room1 = rooms[roomLoc1.y, roomLoc1.x];
 			Room room2 = rooms[roomLoc2.y, roomLoc2.x];
 
-			Instantiate(roomLoc1.x == roomLoc2.x ? verticalWallPrefab : horizontalWallPrefab, (room1.transform.position + room2.transform.position) / 2, Quaternion.identity);
+			Instantiate(roomLoc1.y == roomLoc2.y ? verticalWallPrefab : horizontalWallPrefab, (room1.transform.position + room2.transform.position) / 2, Quaternion.identity);
 		}
 	}
 

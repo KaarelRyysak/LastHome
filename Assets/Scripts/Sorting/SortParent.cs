@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class SortLayer : MonoBehaviour {
+public class SortParent : MonoBehaviour {
 	SpriteRenderer spriteRenderer;
+	SpriteRenderer parentRenderer;
 	public bool updated = false;
 
-	void Awake() {
+	void Start() {
 		spriteRenderer = GetComponent<SpriteRenderer>();
-		spriteRenderer.sortingOrder = (int) (transform.position.y * 1000);
+		parentRenderer = GetComponentInParent<SpriteRenderer>();
+		spriteRenderer.sortingOrder = parentRenderer.sortingOrder;
 		if (updated) {
 			StartCoroutine(UpdateSortingOrder());
 		}
@@ -15,7 +17,7 @@ public class SortLayer : MonoBehaviour {
 
 	IEnumerator UpdateSortingOrder() {
 		while (true) {
-			spriteRenderer.sortingOrder = (int) (transform.position.y * 1000);
+			spriteRenderer.sortingOrder = parentRenderer.sortingOrder;
 			yield return null;
 		}
 	}

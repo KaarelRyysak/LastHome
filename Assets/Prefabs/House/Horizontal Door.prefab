@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7479072573470233740}
   - component: {fileID: 309172750963145783}
-  - component: {fileID: 8380307610720956240}
   - component: {fileID: 8380307610720956247}
+  - component: {fileID: 5243993687130238091}
   m_Layer: 0
   m_Name: Horizontal Door
   m_TagString: Untagged
@@ -81,32 +81,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!61 &8380307610720956240
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4440562408120414764}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.74}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.37, y: 1.57}
-    newSize: {x: 3.01, y: 3.48}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.01, y: 3.48}
-  m_EdgeRadius: 0
 --- !u!114 &8380307610720956247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,3 +96,16 @@ MonoBehaviour:
   open: 0
   openSprite: {fileID: 21300000, guid: 46c897b70bdda174bae2629461738507, type: 3}
   closedSprite: {fileID: 21300000, guid: 5d299ddbb1988d34f8c9e717f1873c85, type: 3}
+--- !u!114 &5243993687130238091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4440562408120414764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d7508995dbecb4d804e992a22c81ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updated: 0
