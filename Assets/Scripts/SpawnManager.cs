@@ -2,23 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnManager : MonoBehaviour
-{
-    public static SpawnManager instance;
-    public Human humanPrefab;
-    public List<Wave> waves;
-    private float lastSpawn;
-    public int numOfAlive;
-    private int waveIndex;
-    private bool waveSpawned;
-    // Start is called before the first frame update
+public class SpawnManager : MonoBehaviour {
+	public static SpawnManager instance;
+	public Human humanPrefab;
+	public List<Wave> waves;
+	private float lastSpawn;
+	public int numOfAlive;
+	private int waveIndex;
+	private bool waveSpawned;
 
-    private void Awake()
-    {
-        instance = this;
+	private void Awake() {
+		instance = this;
 
-        lastSpawn = Time.time;
-
+		lastSpawn = Time.time;
+        
         waveIndex = 0;
 
         numOfAlive = 0;
@@ -51,4 +48,5 @@ public class SpawnManager : MonoBehaviour
             waveSpawned = false;
         }
     }
+
 }

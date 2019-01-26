@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8380307610720956240}
   - component: {fileID: 8380307610720956247}
   m_Layer: 0
-  m_Name: door_hor
+  m_Name: Horizontal Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 3.01, y: 3.48}
+    oldSize: {x: 1.37, y: 1.57}
     newSize: {x: 3.01, y: 3.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
