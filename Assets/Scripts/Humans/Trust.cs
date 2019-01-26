@@ -6,15 +6,16 @@ public class Trust : MonoBehaviour {
 	public static Trust instance;
 	Image trustBar;
 
-	float value = 500;
+	float value = 1000;
 	public float Value {
 		get {
 			return value;
 		} set {
 			this.value = value;
 			trustBar.fillAmount = value / 1000;
-			if (value <= 0)
+			if (value <= 0) {
 				SceneManager.LoadScene("GameOver");
+			}
 		}
 	}
 
