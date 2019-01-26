@@ -11,6 +11,10 @@ public class SpawnManager : MonoBehaviour {
 	private int waveIndex;
 	private bool waveSpawned;
 
+    public List<Sprite> maleHeads;
+    public List<Sprite> femaleHeads;
+    public List<Sprite> bodies;
+
 	private void Awake() {
 		instance = this;
 
@@ -32,8 +36,7 @@ public class SpawnManager : MonoBehaviour {
                 waves[waveIndex].Count -= 1;
                 if(waves[waveIndex].Count >= 0)
                 {
-                    Instantiate(humanPrefab, gameObject.transform.position, gameObject.transform.rotation);
-                    numOfAlive += 1;
+                    makeHuman();
                 }
                 else
                 {
@@ -47,6 +50,23 @@ public class SpawnManager : MonoBehaviour {
             waveIndex += 1;
             waveSpawned = false;
         }
+    }
+    
+    private void makeHuman()
+    {
+        Human human = Instantiate(humanPrefab, gameObject.transform.position, gameObject.transform.rotation);
+        numOfAlive += 1;
+        bool male = Mathf.Round(Random.Range(0, 1)) == 0;
+        human.male = male;
+        if (male)
+        {
+            human.GetComponent<SpriteRenderer>().sprite = maleHeads[Mathf.RoundToInt(Random.Range(-0.49f, (float)maleHeads.Capacity - 0.51f))];
+        }
+        else
+        {
+            human.GetComponent<SpriteRenderer>().sprite = femaleHeads[Mathf.RoundToInt(Random.Range(-0.49f, (float)femaleHeads.Capacity - 0.51f))];
+        }
+        human.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = bodies[Mathf.RoundToInt(Random.Range(-0.49f, (float)bodies.Capacity - 0.51f))];
     }
 
 }
