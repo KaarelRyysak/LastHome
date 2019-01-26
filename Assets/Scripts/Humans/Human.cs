@@ -7,6 +7,9 @@ public class Human : MonoBehaviour {
 		Walking
 	}
 
+    public bool male;
+
+
 	Room currentRoom;
 	House house;
 	Trust trust;
@@ -15,7 +18,13 @@ public class Human : MonoBehaviour {
 	public float speed, patience;
 	public GameObject corpse;
 
-	void Start() {
+    private void Awake()
+    {
+        
+    }
+
+
+    void Start() {
 		house = House.instance;
 		trust = Trust.instance;
 		currentRoom = house.StartRoom;
