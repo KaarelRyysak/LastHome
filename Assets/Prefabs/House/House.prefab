@@ -1302,6 +1302,76 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updated: 0
+--- !u!1 &7329329914682611110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3112278617142097906}
+  - component: {fileID: 7716288395461400374}
+  m_Layer: 0
+  m_Name: WaveSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3112278617142097906
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7329329914682611110}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20, y: 35.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7949383908763483051}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7716288395461400374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7329329914682611110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74068f3842fbfb147bfe146a1fb0d0c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  humanPrefab: {fileID: 6182269447906010937, guid: b3329cbf5e6015447a472db5f38ac811,
+    type: 3}
+  waves:
+  - Count: 4
+    Cooldown: 3
+  - Count: 6
+    Cooldown: 3
+  - Count: 10
+    Cooldown: 6
+  numOfAlive: 0
+  maleHeads:
+  - {fileID: 21300000, guid: 61f12d643d9ea1e42a2c2e15f5de9ef2, type: 3}
+  - {fileID: 21300000, guid: ac134ce7b832e614b89225675a35d868, type: 3}
+  - {fileID: 21300000, guid: 33b2026c7e78d9041b53ceb7c2f13f80, type: 3}
+  - {fileID: 21300000, guid: 2d2407f3688513642a524c013dd0232a, type: 3}
+  - {fileID: 21300000, guid: 9a50c773700b4c34db5afcc71e8eefc5, type: 3}
+  femaleHeads:
+  - {fileID: 21300000, guid: 959e5efe96127ae49ad6e369b259e3e7, type: 3}
+  - {fileID: 21300000, guid: bc2ba37f384f8924898c29576bb7c389, type: 3}
+  bodies:
+  - {fileID: 21300000, guid: 25d1d2b4eb3c6ab4c9b3e9bcda0f4322, type: 3}
+  - {fileID: 21300000, guid: 02539aaa7d1efe44ea8490e2faf3b4f0, type: 3}
+  - {fileID: 21300000, guid: a07b4be250cf417459d2c735f46936d5, type: 3}
+  - {fileID: 21300000, guid: cf608a617a5196a4aa9e142e45530285, type: 3}
+  - {fileID: 21300000, guid: af8c5f9af09681f4bae226bf4cade050, type: 3}
+  - {fileID: 21300000, guid: 0be1bc93b7b355944af3f1461b186585, type: 3}
+  - {fileID: 21300000, guid: fe80e0217b56f34409d14a86441fbe43, type: 3}
 --- !u!1 &7949383908763483045
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,7 +1382,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7949383908763483051}
   - component: {fileID: 7949383908763483050}
-  - component: {fileID: 281636936683805920}
   m_Layer: 0
   m_Name: House
   m_TagString: Untagged
@@ -1350,6 +1419,7 @@ Transform:
   - {fileID: 291823514066349761}
   - {fileID: 1901553007835813980}
   - {fileID: 3805999715454790317}
+  - {fileID: 3112278617142097906}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1430,24 +1500,6 @@ MonoBehaviour:
   - {x: 3, y: 0}
   - {x: 2, y: 0}
   walls: []
---- !u!114 &281636936683805920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7949383908763483045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fa091f0321f89d418ab6bd68ff78ec3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  humanPrefab: {fileID: 6182269447906010937, guid: b3329cbf5e6015447a472db5f38ac811,
-    type: 3}
-  waves:
-  - Count: 100
-    Cooldown: 10
-  numOfAlive: 0
 --- !u!1 &8030667343107860045
 GameObject:
   m_ObjectHideFlags: 0
