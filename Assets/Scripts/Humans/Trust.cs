@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Trust : MonoBehaviour {
 	public static Trust instance;
@@ -12,6 +13,8 @@ public class Trust : MonoBehaviour {
 		} set {
 			this.value = value;
 			trustBar.fillAmount = value / 1000;
+			if (value <= 0)
+				SceneManager.LoadScene("GameOver");
 		}
 	}
 

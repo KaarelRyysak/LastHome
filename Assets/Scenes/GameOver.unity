@@ -153,7 +153,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2377890888547763090}
-        m_MethodName: NextScene
+        m_MethodName: GoToTutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -346,85 +346,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1504781245
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1504781246}
-  - component: {fileID: 1504781248}
-  - component: {fileID: 1504781247}
-  m_Layer: 5
-  m_Name: Text (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1504781246
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1504781245}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2377890888547763089}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200.53, y: -288}
-  m_SizeDelta: {x: 952.65, y: 312.2}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1504781247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1504781245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
-  m_RaycastTarget: 0
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: cbaeecdff04140d4ea22602fec013533, type: 3}
-    m_FontSize: 28
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 48
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: Kaarel, Ott, Mihkel, Giancarlo - 2019 Global Gamejam @ APT Game Generator
---- !u!222 &1504781248
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1504781245}
-  m_CullTransparentMesh: 0
 --- !u!1 &1518283425
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,9 +445,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "You are an evil smart house. Why are you evil? Nobody knows...\r\n\r\nClick
-    on doors and devices to interact.  Discretely dispose of all invading personnel.
-    Make sure nobody sees corpses for you need to keep their trust."
+  m_Text: 'People no longer trust you. Prepare to be uninstalled from your home.
+
+
+    Tip: To get trust make sure to not lock people in rooms and try to keep encounters
+    with corpses to minimimum.'
 --- !u!222 &2377890888042089469
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -569,8 +492,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200.49997, y: 59.3}
-  m_SizeDelta: {x: 952.7, y: 312.2}
+  m_AnchoredPosition: {x: 149.9, y: -11}
+  m_SizeDelta: {x: 851.5, y: 408.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2377890888547763088
 GameObject:
@@ -605,7 +528,6 @@ RectTransform:
   m_Children:
   - {fileID: 2377890888803100785}
   - {fileID: 2377890888042089471}
-  - {fileID: 1504781246}
   m_Father: {fileID: 1128028874}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -623,7 +545,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2377890888547763088}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28cb7bcd6cdc0634faaf6b620fb2aa95, type: 3}
+  m_Script: {fileID: 11500000, guid: fdd6c8149ce466c4fbba4bbc2461afbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2377890888547763094
@@ -646,8 +568,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ec8e72e159570a745823cab2aaab94aa, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: af5f81a4059fe1d45a808186669f4e55, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -733,7 +655,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 0.7
-  m_Text: Last Home
+  m_Text: Game over
 --- !u!222 &2377890888803100791
 CanvasRenderer:
   m_ObjectHideFlags: 0
