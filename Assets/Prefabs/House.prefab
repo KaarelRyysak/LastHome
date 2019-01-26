@@ -106,7 +106,7 @@ MonoBehaviour:
   width: 4
   roomSize: 10
   startY: 3
-  startX: 3
+  startX: 2
   doors:
   - {x: 0, y: 0}
   - {x: 0, y: 1}
