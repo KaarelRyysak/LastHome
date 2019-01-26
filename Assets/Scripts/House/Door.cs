@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 
 public class Door : MonoBehaviour {
-	public bool open = false; //Closed on startup
+    public bool open;
 	public Sprite openSprite;
 	public Sprite closedSprite;
 	private SpriteRenderer spriteRenderer;
 
 	void Awake() {
 		spriteRenderer = GetComponent<SpriteRenderer>();
-		spriteRenderer.sprite = closedSprite;
+		spriteRenderer.sprite = openSprite;
+
+        open = true;
 	}
 
 	private void OnMouseDown() {
