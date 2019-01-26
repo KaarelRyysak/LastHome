@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Human : MonoBehaviour {
@@ -75,7 +74,7 @@ public class Human : MonoBehaviour {
 	public void Die() {
 		Instantiate(corpse, gameObject.transform.position, corpse.transform.rotation);
 
-        SpawnManager.instance.numOfAlive -= 1;
+		SpawnManager.instance.numOfAlive -= 1;
 
 		Destroy(gameObject);
 	}
