@@ -18,7 +18,7 @@ public class Human : MonoBehaviour {
     
     public void Die()
     {
-        GameObject.Instantiate(corpse, this.gameObject.transform.position, this.gameObject.transform.rotation);
+        GameObject.Instantiate(corpse, this.gameObject.transform.position, corpse.transform.rotation);
 
         Destroy(this.gameObject);
     }
