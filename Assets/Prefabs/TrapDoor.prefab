@@ -90,7 +90,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 795786017095888269}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -118,6 +118,10 @@ MonoBehaviour:
   activated: 0
   activatedSprite: {fileID: 21300000, guid: cc59f479086867b42ad2b3873d90c3ce, type: 3}
   disabledSprite: {fileID: 21300000, guid: 39c3c5d747098154ba9c34406e80dc71, type: 3}
+  bloodyActivatedSprite: {fileID: 21300000, guid: cc59f479086867b42ad2b3873d90c3ce,
+    type: 3}
+  bloodyDisabledSprite: {fileID: 21300000, guid: 39c3c5d747098154ba9c34406e80dc71,
+    type: 3}
 --- !u!61 &795786017095888273
 BoxCollider2D:
   m_ObjectHideFlags: 0

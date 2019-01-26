@@ -5,8 +5,11 @@ using UnityEngine;
 public class Trap : MonoBehaviour
 {
     public bool activated;
+    private bool bloody;
     public Sprite activatedSprite;
     public Sprite disabledSprite;
+    public Sprite bloodyActivatedSprite;
+    public Sprite bloodyDisabledSprite;
     private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
@@ -31,13 +34,22 @@ public class Trap : MonoBehaviour
         activated = !activated;
 
         //Change sprite
-        if (activated)
+        if (activated && !bloody)
         {
             spriteRenderer.sprite = activatedSprite;
         }
-        else
+        else if (!activated && !bloody)
         {
             spriteRenderer.sprite = disabledSprite;
+        }
+        else if (activated && bloody)
+        {
+
+            spriteRenderer.sprite = bloodyActivatedSprite;
+        }
+        else
+        {
+            spriteRenderer.sprite = bloodyDisabledSprite;
         }
     }
     
@@ -48,6 +60,8 @@ public class Trap : MonoBehaviour
         if (collision.gameObject.GetComponent<Human>() != null && activated)
         {
             collision.gameObject.GetComponent<Human>().Die();
+            bloody = true;
+            spriteRenderer.sprite = bloodyActivatedSprite;
         }
     }
 }
