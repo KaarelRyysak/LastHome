@@ -25,8 +25,9 @@ public class Human : MonoBehaviour {
 
 	IEnumerator AI() {
 		while (state == State.Idle) {
-			yield return new WaitForSeconds(10);
+			yield return new WaitForSeconds(3);
 			state = State.Walking;
+			Debug.Log("Starting to walk");
 			yield return StartCoroutine(PathToRoom());
 			state = State.Idle;
 		}
@@ -38,6 +39,7 @@ public class Human : MonoBehaviour {
 
 		foreach (Room room in path) {
 			yield return LerpMove(transform.position, room.transform.position);
+			currentRoom = room;
 		}
 	}
 

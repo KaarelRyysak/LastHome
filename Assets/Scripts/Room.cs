@@ -10,13 +10,4 @@ public class Room : MonoBehaviour {
 		this.y = y;
 		this.x = x;
 	}
-
-	public void Connect(Room room) {
-		neighbors.Add(room);
-
-		//If the other room doesn't have this room, add it there too
-		if (!room.neighbors.Contains(this)) {
-			room.Connect(this);
-		}
-	}
 }

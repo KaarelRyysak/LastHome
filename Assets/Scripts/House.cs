@@ -4,21 +4,54 @@ using UnityEngine;
 public class House : MonoBehaviour {
 	public static House instance;
 	public Room roomPrefab;
+	public Door verticalDoorPrefab, horizontalDoorPrefab;
+	public GameObject verticalWallPrefab, horizontalWallPrefab;
 
 	public int height, width;
 	public int roomSize;
 	public int startY, startX;
 	Room[,] rooms;
+	Dictionary<Pair<Room>, Door> roomsToDoor = new Dictionary<Pair<Room>, Door>();
+	Dictionary<Door, Pair<Room>> doorToRooms = new Dictionary<Door, Pair<Room>>();
+
 	public Room StartRoom => rooms[startY, startX];
-	//Dictionary<List<Room>, Door>
+	public Vector2Int[] doors; //(x, y) coordinates of rooms. 2 consecutive define a door
+	public Vector2Int[] walls; //(x, y) coordinates of rooms. 2 consecutive define a door
 
 	void Awake() {
 		instance = this;
+
+		//Instantiate rooms
 		rooms = new Room[height, width];
 		for (int y = 0; y < startY; y++) {
 			for (int x = 0; x < startX; x++) {
 				rooms[y, x] = Instantiate(roomPrefab, new Vector3(x * roomSize, y * roomSize), Quaternion.identity);
 			}
+		}
+
+		//Instantiate doors and room neighbors
+		for (int i = 0; i < doors.Length / 2; i++) {
+			Vector2Int roomLoc1 = doors[i * 2];
+			Vector2Int roomLoc2 = doors[i * 2 + 1];
+			Room room1 = rooms[roomLoc1.y, roomLoc1.x];
+			Room room2 = rooms[roomLoc2.y, roomLoc2.x];
+
+			room1.neighbors.Add(room2);
+			room2.neighbors.Add(room1);
+
+			Door door = Instantiate(roomLoc1.x == roomLoc2.x ? verticalDoorPrefab : horizontalDoorPrefab, (room1.transform.position + room2.transform.position) / 2, Quaternion.identity);
+			doorToRooms[door] = new Pair<Room>(room1, room2);
+			roomsToDoor[new Pair<Room>(room1, room2)] = door;
+		}
+
+		//Instantiate walls
+		for (int i = 0; i < doors.Length / 2; i++) {
+			Vector2Int roomLoc1 = doors[i * 2];
+			Vector2Int roomLoc2 = doors[i * 2 + 1];
+			Room room1 = rooms[roomLoc1.y, roomLoc1.x];
+			Room room2 = rooms[roomLoc2.y, roomLoc2.x];
+
+			Instantiate(roomLoc1.x == roomLoc2.x ? verticalWallPrefab : horizontalWallPrefab, (room1.transform.position + room2.transform.position) / 2, Quaternion.identity);
 		}
 	}
 
