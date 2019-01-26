@@ -11,8 +11,8 @@ public class House : MonoBehaviour {
 	public int roomSize;
 	public int startY, startX;
 	Room[,] rooms;
-	Dictionary<Pair<Room>, Door> roomsToDoor = new Dictionary<Pair<Room>, Door>();
-	Dictionary<Door, Pair<Room>> doorToRooms = new Dictionary<Door, Pair<Room>>();
+	public Dictionary<Pair<Room>, Door> roomsToDoor = new Dictionary<Pair<Room>, Door>();
+	public Dictionary<Door, Pair<Room>> doorToRooms = new Dictionary<Door, Pair<Room>>();
 
 	public Room StartRoom => rooms[startY, startX];
 	public Room RandomRoom => rooms[Random.Range(0, height), Random.Range(0, width)];
@@ -40,7 +40,7 @@ public class House : MonoBehaviour {
 			room1.neighbors.Add(room2);
 			room2.neighbors.Add(room1);
 
-			Door door = Instantiate(roomLoc1.x == roomLoc2.x ? verticalDoorPrefab : horizontalDoorPrefab, (room1.transform.position + room2.transform.position) / 2, Quaternion.identity);
+			Door door = Instantiate(roomLoc1.y == roomLoc2.y ? verticalDoorPrefab : horizontalDoorPrefab, (room1.transform.position + room2.transform.position) / 2, Quaternion.identity);
 			doorToRooms[door] = new Pair<Room>(room1, room2);
 			roomsToDoor[new Pair<Room>(room1, room2)] = door;
 		}
