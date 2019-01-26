@@ -895,7 +895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   updated: 0
   offset: 0
---- !u!1 &4049396031760526507
+--- !u!1 &4311905525236713962
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -974,7 +974,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &4311905525236713962
+--- !u!114 &2889494163206252829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4311905525236713962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d7508995dbecb4d804e992a22c81ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updated: 0
+  offset: 0
+--- !u!1 &4614080084413266376
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2076,7 +2090,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &6318168610796609245
+--- !u!114 &5160028617685261863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6148399327903599728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d7508995dbecb4d804e992a22c81ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updated: 0
+  offset: 0
+--- !u!1 &6155517410982780687
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2155,6 +2183,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &599801902738328649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6155517410982780687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d7508995dbecb4d804e992a22c81ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updated: 0
+  offset: 0
 --- !u!1 &6799249399289189175
 GameObject:
   m_ObjectHideFlags: 0
@@ -2556,7 +2598,15 @@ MonoBehaviour:
   - {x: 3, y: 0}
   - {x: 3, y: 0}
   - {x: 2, y: 0}
-  walls: []
+  walls:
+  - {x: 0, y: 0}
+  - {x: 0, y: 1}
+  - {x: 1, y: 1}
+  - {x: 2, y: 1}
+  - {x: 3, y: 3}
+  - {x: 2, y: 3}
+  - {x: 1, y: 1}
+  - {x: 1, y: 2}
 --- !u!1 &8030667343107860045
 GameObject:
   m_ObjectHideFlags: 0
