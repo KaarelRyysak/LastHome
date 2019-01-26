@@ -24,8 +24,8 @@ public class House : MonoBehaviour {
 
 		//Instantiate rooms
 		rooms = new Room[height, width];
-		for (int y = 0; y < startY; y++) {
-			for (int x = 0; x < startX; x++) {
+		for (int y = 0; y < height; y++) {
+			for (int x = 0; x < width; x++) {
 				rooms[y, x] = Instantiate(roomPrefab, new Vector3(x * roomSize, y * roomSize), Quaternion.identity);
 			}
 		}
