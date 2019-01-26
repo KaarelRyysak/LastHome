@@ -14,6 +14,8 @@ public class Human : MonoBehaviour {
 
 	public float speed;
 
+	public GameObject corpse;
+
 	void Start() {
 		house = House.instance;
 		currentRoom = house.StartRoom;
@@ -49,5 +51,11 @@ public class Human : MonoBehaviour {
 			yield return null;
 			transform.position = Vector2.Lerp(from, to, (Time.time - startTime) / duration);
 		}
+	}
+
+	public void Die() {
+		Instantiate(corpse, gameObject.transform.position, gameObject.transform.rotation);
+
+		Destroy(gameObject);
 	}
 }
