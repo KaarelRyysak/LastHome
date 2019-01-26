@@ -12,8 +12,7 @@ public class Human : MonoBehaviour {
 	House house;
 	State state = State.Idle;
 
-	public float speed;
-
+	public float speed, patience;
 	public GameObject corpse;
 
 	void Start() {
@@ -27,7 +26,6 @@ public class Human : MonoBehaviour {
 		while (state == State.Idle) {
 			yield return new WaitForSeconds(3);
 			state = State.Walking;
-			Debug.Log("Starting to walk");
 			yield return StartCoroutine(PathToRoom());
 			state = State.Idle;
 		}
@@ -35,10 +33,25 @@ public class Human : MonoBehaviour {
 
 	IEnumerator PathToRoom() {
 		Room target = house.RandomRoom;
-		List<Room> path = house.GetPath(currentRoom, target, false);
 
-		foreach (Room room in path) {
-			yield return LerpMove(transform.position, room.transform.position);
+		//Extend path to include standing before and after doors
+		Vector3 location = transform.position;
+		foreach (Room room in house.GetPath(currentRoom, target, false)) {
+			yield return LerpMove(transform.position, Vector3.Lerp(currentRoom.transform.position, room.transform.position, 0.4f));
+
+			//Only proceed if door is open
+			Door door = house.roomsToDoor[new Pair<Room>(currentRoom, room)];
+			float waitEnd = Time.time + patience;
+
+			while (!door.open && Time.time < waitEnd) {
+				yield return null;
+			}
+			if (!door.open) { //Out of patience
+				//TODO: Remove trust
+				yield break;
+			}
+
+			yield return LerpMove(transform.position, Vector3.Lerp(currentRoom.transform.position, room.transform.position, 0.6f));
 			currentRoom = room;
 		}
 	}
