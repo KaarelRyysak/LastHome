@@ -1,8 +1,5 @@
-﻿public class Room {
-	public int y, x;
+﻿using UnityEngine;
 
-	public Room(int y, int x) {
-		this.y = y;
-		this.x = x;
-	}
+public class Room : MonoBehaviour {
+	public int y, x;
 }
