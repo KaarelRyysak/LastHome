@@ -317,6 +317,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8380307610720956240, guid: c2c3f2727e1de4f4a8f94e8bbd332c84,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8380307610720956240, guid: c2c3f2727e1de4f4a8f94e8bbd332c84,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 1.74
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2c3f2727e1de4f4a8f94e8bbd332c84, type: 3}
 --- !u!1001 &761943473
@@ -403,12 +413,12 @@ PrefabInstance:
     - target: {fileID: 444442070128676473, guid: a1b8176c79a485741acee000470035c1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 10.1
       objectReference: {fileID: 0}
     - target: {fileID: 444442070128676473, guid: a1b8176c79a485741acee000470035c1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 13.6
       objectReference: {fileID: 0}
     - target: {fileID: 444442070128676473, guid: a1b8176c79a485741acee000470035c1,
         type: 3}
@@ -454,26 +464,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 444442070128676474, guid: a1b8176c79a485741acee000470035c1,
-        type: 3}
-      propertyPath: orthographic size
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 444442070128676472, guid: a1b8176c79a485741acee000470035c1,
-        type: 3}
-      propertyPath: scrollSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 444442070128676472, guid: a1b8176c79a485741acee000470035c1,
-        type: 3}
-      propertyPath: maxZoom
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 444442070128676472, guid: a1b8176c79a485741acee000470035c1,
-        type: 3}
-      propertyPath: panEdgeSize
-      value: 0.06
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1b8176c79a485741acee000470035c1, type: 3}

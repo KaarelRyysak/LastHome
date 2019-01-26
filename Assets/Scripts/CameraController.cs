@@ -10,6 +10,7 @@ public class CameraController : MonoBehaviour
     public float leftBound = -15f;
     public float rightBound = 15f;
     public float panSpeed = 1f;
+    public float moveSpeed = 100f;
 
     
 
@@ -46,22 +47,22 @@ public class CameraController : MonoBehaviour
         //Screen panning using mouse
         if (Input.mousePosition.x >= Screen.width - Screen.width * panEdgeSize)
         {
-            x += Time.deltaTime * panSpeed;
+            x += panSpeed;
         }
 
         if (Input.mousePosition.x <= 0 + Screen.width * panEdgeSize)
         {
-            x -= Time.deltaTime * panSpeed;
+            x -= panSpeed;
         }
 
         if (Input.mousePosition.y >= Screen.height - Screen.height * panEdgeSize)
         {
-            y += Time.deltaTime * panSpeed;
+            y += panSpeed;
         }
 
         if (Input.mousePosition.y <= 0 + Screen.height * panEdgeSize)
         {
-            y -= Time.deltaTime * panSpeed;
+            y -= panSpeed;
         }
 
 
@@ -78,7 +79,7 @@ public class CameraController : MonoBehaviour
         }
 
         //Move camera
-        gameObject.transform.Translate(new Vector3(x, y, 0f) * panSpeed * Time.deltaTime);
+        gameObject.transform.Translate(new Vector3(x, y, 0f) * moveSpeed * Time.deltaTime);
 
 
 
