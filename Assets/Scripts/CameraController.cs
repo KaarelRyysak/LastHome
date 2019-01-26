@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public float upperBound = 50;
-    public float lowerBound = -50;
-    public float leftBound = -50;
-    public float rightBound = 50;
+    public float upperBound = 10f;
+    public float lowerBound = -10f;
+    public float leftBound = -15f;
+    public float rightBound = 15f;
+
+    public float maxZoom = 5f;
+    //public float rotSpeed = 10f;
+    public float scrollSpeed = 3f;
+    private float zoom = 0f;
+
+    private float initialSize;
+
+    private Camera camera;
 
 // Start is called before the first frame update
     void Start()
     {
-        
+        camera = this.GetComponent<Camera>();
+        initialSize = camera.orthographicSize;
+        zoom = initialSize;
     }
 
     // Update is called once per frame
@@ -34,7 +45,16 @@ public class CameraController : MonoBehaviour
             y = 0f;
         }
 
-        //Move
+        //Move camera
         gameObject.transform.Translate(new Vector3(x, y, 0f));
+
+        //Get scroll
+        zoom -= Input.GetAxis("Mouse ScrollWheel") * scrollSpeed;
+
+        //Stop based on bounds
+        zoom = Mathf.Clamp(zoom, initialSize-maxZoom, initialSize+maxZoom);
+        
+        //Apply zoom
+        camera.orthographicSize = zoom;
     }
 }
