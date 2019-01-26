@@ -46,9 +46,9 @@ public class House : MonoBehaviour {
 		}
 
 		//Instantiate walls
-		for (int i = 0; i < doors.Length / 2; i++) {
-			Vector2Int roomLoc1 = doors[i * 2];
-			Vector2Int roomLoc2 = doors[i * 2 + 1];
+		for (int i = 0; i < walls.Length / 2; i++) {
+			Vector2Int roomLoc1 = walls[i * 2];
+			Vector2Int roomLoc2 = walls[i * 2 + 1];
 			Room room1 = rooms[roomLoc1.y, roomLoc1.x];
 			Room room2 = rooms[roomLoc2.y, roomLoc2.x];
 
