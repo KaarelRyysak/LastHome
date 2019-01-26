@@ -5,11 +5,12 @@ public class SortParent : MonoBehaviour {
 	SpriteRenderer spriteRenderer;
 	SpriteRenderer parentRenderer;
 	public bool updated = false;
+	public int offset;
 
 	void Start() {
 		spriteRenderer = GetComponent<SpriteRenderer>();
-		parentRenderer = GetComponentInParent<SpriteRenderer>();
-		spriteRenderer.sortingOrder = parentRenderer.sortingOrder;
+		parentRenderer = transform.parent.GetComponent<SpriteRenderer>();
+		spriteRenderer.sortingOrder = parentRenderer.sortingOrder + offset;
 		if (updated) {
 			StartCoroutine(UpdateSortingOrder());
 		}
@@ -17,7 +18,7 @@ public class SortParent : MonoBehaviour {
 
 	IEnumerator UpdateSortingOrder() {
 		while (true) {
-			spriteRenderer.sortingOrder = parentRenderer.sortingOrder;
+			spriteRenderer.sortingOrder = parentRenderer.sortingOrder + offset;
 			yield return null;
 		}
 	}

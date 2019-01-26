@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updated: 0
+  offset: 1
 --- !u!1 &727254605077169819
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,3 +239,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updated: 0
+  offset: 0
