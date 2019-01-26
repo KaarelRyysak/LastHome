@@ -20,6 +20,8 @@ public class SpawnManager : MonoBehaviour
         lastSpawn = Time.time;
 
         waveIndex = 0;
+
+        numOfAlive = 0;
     }
 
     // Update is called once per frame
