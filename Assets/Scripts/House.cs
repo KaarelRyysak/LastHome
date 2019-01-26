@@ -10,6 +10,7 @@ public class House : MonoBehaviour {
 	public int roomSize;
 	public int startY, startX;
 	Room[,] rooms;
+    //Dictionary<List<Room>, Door>
 
 	void Awake() {
 		instance = this;

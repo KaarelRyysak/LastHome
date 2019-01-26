@@ -41,4 +41,13 @@ public class Trap : MonoBehaviour
         }
     }
 
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        //If collided with human
+        if (collision.gameObject.GetComponent<Human>() != null && activated)
+        {
+            collision.gameObject.GetComponent<Human>().Die();
+        }
+    }
 }
