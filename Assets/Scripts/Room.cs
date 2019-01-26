@@ -1,26 +1,22 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
-public class Room {
+public class Room : MonoBehaviour {
 	public int y, x;
-    private List<Room> connected;
+    public List<Room> neighbors = new List<Room>();
 
-	public Room(int y, int x) {
+    public Room(int y, int x) {
 		this.y = y;
 		this.x = x;
 	}
 
-    public List<Room> GetConnected()
-    {
-        return connected;
-    }
 
     public void Connect(Room room)
     {
-        connected.Add(room);
-        List<Room> otherConnected = room.GetConnected();
+        neighbors.Add(room);
         
         //If the other room doesn't have this room, add it there too
-        if (!otherConnected.Contains(this))
+        if (!room.neighbors.Contains(this))
         {
             room.Connect(this);
         }

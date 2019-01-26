@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class House : MonoBehaviour {
 	public static House instance;
+	public Room roomPrefab;
 
 	public int height, width;
+	public int roomSize;
 	public int startY, startX;
 	Room[,] rooms;
 
@@ -14,7 +16,7 @@ public class House : MonoBehaviour {
 		rooms = new Room[height, width];
 		for (int y = 0; y < startY; y++) {
 			for (int x = 0; x < startX; x++) {
-				rooms[y, x] = new Room(y, x);
+				rooms[y, x] = Instantiate(roomPrefab, new Vector3(x * roomSize, y * roomSize), Quaternion.identity);
 			}
 		}
 	}
@@ -25,7 +27,7 @@ public class House : MonoBehaviour {
 		return null;
 	}
 
-	public void SetDoorOpen(bool open) {
+	public void SetDoorOpen(/*Door door, */bool open) {
 
 	}
 }
