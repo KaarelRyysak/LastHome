@@ -11,6 +11,8 @@ public class CameraController : MonoBehaviour
     public float rightBound = 15f;
     public float panSpeed = 1f;
 
+    
+
 
     [Header("This is a percentage of the whole screen")]
     public float panEdgeSize = 0.15f;
@@ -23,14 +25,14 @@ public class CameraController : MonoBehaviour
 
     private float initialSize;
 
-    private Camera camera;
+    private Camera mainCamera;
 
 
 // Start is called before the first frame update
     void Start()
     {
-        camera = this.GetComponent<Camera>();
-        initialSize = camera.orthographicSize;
+        mainCamera = this.GetComponent<Camera>();
+        initialSize = mainCamera.orthographicSize;
         zoom = initialSize;
     }
 
@@ -87,7 +89,8 @@ public class CameraController : MonoBehaviour
         zoom = Mathf.Clamp(zoom, initialSize-maxZoom, initialSize+maxZoom);
         
         //Apply zoom
-        camera.orthographicSize = zoom;
+        mainCamera.orthographicSize = zoom;
+        
         
     }
 }
