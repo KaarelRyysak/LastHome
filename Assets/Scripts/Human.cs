@@ -54,7 +54,7 @@ public class Human : MonoBehaviour {
 	}
 
 	public void Die() {
-		Instantiate(corpse, gameObject.transform.position, gameObject.transform.rotation);
+		Instantiate(corpse, gameObject.transform.position, corpse.transform.rotation);
 
 		Destroy(gameObject);
 	}
