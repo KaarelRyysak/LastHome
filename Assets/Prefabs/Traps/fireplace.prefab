@@ -96,6 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 346ba1eaf98c304439d246e0fec06d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brokenHeart: {fileID: 6805971561585758141, guid: ccb89ea46ae6ea0479aeee9ebd0d2f2d,
+    type: 3}
   roomCoords: {x: 2, y: 3}
   activatedSprite: {fileID: 21300000, guid: 7909686eb15918043a6e8ac846843b20, type: 3}
   disabledSprite: {fileID: 21300000, guid: 7909686eb15918043a6e8ac846843b20, type: 3}

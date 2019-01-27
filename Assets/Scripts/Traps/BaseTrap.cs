@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 
 public abstract class BaseTrap : MonoBehaviour {
+	public GameObject brokenHeart;
+
 	bool activated = false;
 	public bool Activated {
 		get {
@@ -13,6 +15,7 @@ public abstract class BaseTrap : MonoBehaviour {
 						continue;
 					}
 					human.Repulse();
+					Instantiate(brokenHeart, human.transform.position, Quaternion.identity);
 					trust.Value -= human.trustLossPerActiveTrap;
 				}
 			}

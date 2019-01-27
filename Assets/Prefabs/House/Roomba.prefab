@@ -98,6 +98,9 @@ MonoBehaviour:
   startRoom: {x: 0, y: 3}
   speed: 3
   patience: 5
+  unselected: {fileID: 21300000, guid: 5c6bf40ad14671143ace973d9267b906, type: 3}
+  selected: {fileID: 21300000, guid: cd12c16aad4300346a1039d797f3d0a6, type: 3}
+  bodyCarried: 0
 --- !u!58 &292828871608540428
 CircleCollider2D:
   m_ObjectHideFlags: 0

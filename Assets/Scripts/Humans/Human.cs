@@ -13,7 +13,7 @@ public class Human : MonoBehaviour {
 	public bool onFire = false;
 	const float fallingSpeed = 10f;
 
-
+	public GameObject brokenHeart;
 	Room currentRoom;
 	House house;
 	Trust trust;
@@ -54,6 +54,7 @@ public class Human : MonoBehaviour {
 		//Check for dead humans
 		foreach (Human human in currentRoom.humans) {
 			if (human.dead) {
+				Instantiate(brokenHeart, human.transform.position, Quaternion.identity);
 				trust.Value -= trustLossPerCorpse;
 				Repulse();
 			}
@@ -62,6 +63,7 @@ public class Human : MonoBehaviour {
 		//Check for active traps
 		foreach (BaseTrap trap in currentRoom.traps) {
 			if (trap.Activated) {
+				Instantiate(brokenHeart, trap.transform.position, Quaternion.identity);
 				trust.Value -= trustLossPerActiveTrap;
 				Repulse();
 			}
@@ -146,6 +148,7 @@ public class Human : MonoBehaviour {
 				yield return null;
 			}
 			if (!door.open) { //Out of patience
+				Instantiate(brokenHeart, transform.position, Quaternion.identity);
 				yield break;
 			} else {
 				trust.Value += trustGainPerDoor;
@@ -187,6 +190,7 @@ public class Human : MonoBehaviour {
 		foreach (Human human in currentRoom.humans) {
 			if (human != this && human != dead) {
 				human.Repulse();
+				Instantiate(brokenHeart, human.transform.position, Quaternion.identity);
 				trust.Value -= trustLossPerCorpse;
 			}
 		}
@@ -229,6 +233,7 @@ public class Human : MonoBehaviour {
 		dead = true;
 		foreach (Human human in currentRoom.humans) {
 			if (human != this && human != dead) {
+				Instantiate(brokenHeart, human.transform.position, Quaternion.identity);
 				human.Repulse();
 				trust.Value -= trustLossPerCorpse;
 			}

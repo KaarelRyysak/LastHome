@@ -200,7 +200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae79eed6bd050084ba418dfb236732b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomCoords: {x: 0, y: 2}
+  brokenHeart: {fileID: 6805971561585758141, guid: ccb89ea46ae6ea0479aeee9ebd0d2f2d,
+    type: 3}
+  roomCoords: {x: 0, y: 3}
   activatedSprite: {fileID: 21300000, guid: efe8f92bcaf6d774c9a51000f8cdbca2, type: 3}
   disabledSprite: {fileID: 21300000, guid: 3a62c9829007fb7458632c9a5457b057, type: 3}
   bloodyActivatedSprite: {fileID: 21300000, guid: efe8f92bcaf6d774c9a51000f8cdbca2,

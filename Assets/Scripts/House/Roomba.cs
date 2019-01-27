@@ -7,6 +7,7 @@ public class Roomba : MonoBehaviour {
 	Room currentRoom;
 	House house;
 	SpriteRenderer spriteRenderer;
+	public Sprite unselected, selected;
 	Camera cam;
 	public bool bodyCarried = false;
 	bool hasBeenClicked = false;
@@ -26,6 +27,7 @@ public class Roomba : MonoBehaviour {
 		if (Input.GetButtonDown("Fire1")) {
 			if (hasBeenClicked) {
 				hasBeenClicked = false;
+				spriteRenderer.sprite = unselected;
 
 				//Interrupt previous stuff
 				StopAllCoroutines();
@@ -38,6 +40,7 @@ public class Roomba : MonoBehaviour {
 				foreach (Collider2D result in results) {
 					if (result.CompareTag("Roomba")) {
 						hasBeenClicked = !hasBeenClicked;
+						spriteRenderer.sprite = hasBeenClicked ? selected : unselected;
 						break;
 					}
 				}

@@ -138,12 +138,14 @@ MonoBehaviour:
   dead: 0
   falling: 0
   onFire: 0
+  brokenHeart: {fileID: 6805971561585758141, guid: ccb89ea46ae6ea0479aeee9ebd0d2f2d,
+    type: 3}
   speed: 5
   patience: 3
   trustGainPerDoor: 1
   trustLossPerSecondWaiting: 10
-  trustLossPerCorpse: 100
-  trustLossPerActiveTrap: 50
+  trustLossPerCorpse: 200
+  trustLossPerActiveTrap: 100
   idleStrolls: 3
 --- !u!114 &6032597897607204590
 MonoBehaviour:
