@@ -13,21 +13,19 @@ public class PitTrap : BaseTrap {
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		border = gameObject.transform.GetChild(0).gameObject;
 
-		//Inactive on startup
-		activated = false;
 		spriteRenderer.sprite = disabledSprite;
 	}
 
 	private void OnMouseDown() {
 		//Toggle active on click
-		activated = !activated;
+		Activated = !Activated;
 
 		//Change sprite
-		if (activated && !bloody) {
+		if (Activated && !bloody) {
 			spriteRenderer.sprite = activatedSprite;
-		} else if (!activated && !bloody) {
+		} else if (!Activated && !bloody) {
 			spriteRenderer.sprite = disabledSprite;
-		} else if (activated && bloody) {
+		} else if (Activated && bloody) {
 			spriteRenderer.sprite = bloodyActivatedSprite;
 		} else {
 			spriteRenderer.sprite = bloodyDisabledSprite;
@@ -37,7 +35,7 @@ public class PitTrap : BaseTrap {
 	private void OnTriggerStay2D(Collider2D collision) {
 		Human human = collision.gameObject.GetComponent<Human>();
 		//If collided with human
-		if (human != null && activated && !human.falling) {
+		if (human != null && Activated && !human.falling) {
 
 			SortLayer sortLayer = human.gameObject.GetComponent<SortLayer>();
 			sortLayer.offset = -400;

@@ -9,7 +9,7 @@ public class Human : MonoBehaviour {
 	}
 
 	public bool male;
-	bool dead = false;
+	public bool dead = false;
 	public bool falling = false;
 	const float fallingSpeed = 10f;
 
@@ -20,7 +20,7 @@ public class Human : MonoBehaviour {
 	State state = State.Idle;
 
 	public float speed, patience;
-	public float trustGainPerDoor, trustLossPerSecondWaiting;
+	public float trustGainPerDoor, trustLossPerSecondWaiting, trustLossPerCorpse, trustLossPerActiveTrap;
 	public int idleStrolls;
 
 	void Start() {
@@ -43,13 +43,26 @@ public class Human : MonoBehaviour {
 	void OnEnterRoom() {
 		//Check for dead humans
 		foreach (Human human in currentRoom.humans) {
-
+			if (human.dead) {
+				trust.Value -= trustLossPerCorpse;
+				Repulse();
+			}
 		}
 
 		//Check for active traps
+		foreach (BaseTrap trap in currentRoom.traps) {
+			if (trap.Activated) {
+				trust.Value -= trustLossPerActiveTrap;
+				Repulse();
+			}
+		}
 	}
 
 	public void Attract(Room room) {
+		if (dead) {
+			return;
+		}
+
 		if (state != State.Fleeing) {
 			state = State.Walking;
 			StopAllCoroutines();
@@ -58,6 +71,10 @@ public class Human : MonoBehaviour {
 	}
 
 	public void Repulse() {
+		if (dead) {
+			return;
+		}
+
 		if (state != State.Fleeing) {
 			state = State.Fleeing;
 			StopAllCoroutines();
@@ -137,14 +154,22 @@ public class Human : MonoBehaviour {
 	}
 
 	public void Die() {
-		if (!dead) {
-			dead = true;
-
-			SpawnManager.instance.numOfAlive -= 1;
-			StopAllCoroutines();
-
-			gameObject.transform.Rotate(new Vector3(0, 0, 90));
+		if (dead) {
+			return;
 		}
+		
+		dead = true;
+		foreach (Human human in currentRoom.humans) {
+			if (human != this && human != dead) {
+				human.Repulse();
+				trust.Value -= trustLossPerCorpse;
+			}
+		}
+
+		SpawnManager.instance.numOfAlive--;
+		StopAllCoroutines();
+
+		gameObject.transform.Rotate(new Vector3(0, 0, 90));
 	}
 
 	public IEnumerator Fall(GameObject pitTrap) {

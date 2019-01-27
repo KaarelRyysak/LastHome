@@ -9,7 +9,7 @@ public class RotatingBlades : MonoBehaviour {
 	}
 
 	void Update() {
-		if (trap.activated) {
+		if (trap.Activated) {
 			transform.Rotate(new Vector3(0, 0, -rotationAmount * 10 * Time.deltaTime));
 		} else {
 			transform.Rotate(new Vector3(0, 0, -rotationAmount * Time.deltaTime));
