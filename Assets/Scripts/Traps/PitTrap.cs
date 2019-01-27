@@ -68,6 +68,7 @@ public class PitTrap : BaseTrap {
         else
         {
             collision.gameObject.GetComponent<Collider2D>().enabled = false;
+            collision.gameObject.transform.parent = border.transform;
         }
 	}
 
