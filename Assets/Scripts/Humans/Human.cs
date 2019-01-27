@@ -198,4 +198,14 @@ public class Human : MonoBehaviour {
 		}
 		Destroy(gameObject);
 	}
+
+    public IEnumerator OnFire(GameObject firePrefab, GameObject ashPrefab)
+    {
+        GameObject.Instantiate(firePrefab, gameObject.transform.position, gameObject.transform.rotation, gameObject.transform);
+        yield return new WaitForSeconds(Random.Range(3f, 4f));
+        GameObject.Instantiate(ashPrefab, gameObject.transform.position, gameObject.transform.rotation);
+        Die();
+
+        Destroy(gameObject);
+    }
 }
