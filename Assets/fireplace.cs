@@ -8,6 +8,7 @@ public class fireplace : MonoBehaviour
     private Trap trap;
     private bool activated;
     public GameObject firePrefab;
+    public GameObject ashPrefab;
     // Start is called before the first frame update
     void Awake()
     {
@@ -41,8 +42,8 @@ public class fireplace : MonoBehaviour
         if (human != null && activated)
         {
             GameObject fire2 = GameObject.Instantiate(firePrefab, human.transform.position, human.transform.rotation, human.transform);
-            fire2.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
             fire2.transform.Rotate(new Vector3(0, 0, 90));
         }
+        human.StartCoroutine(human.OnFire(firePrefab, ashPrefab));
     }
 }
