@@ -10,6 +10,9 @@ public class AudioPlayer : MonoBehaviour
     public AudioGroup openDoorGroup;
     public AudioGroup femaleDeathGroup;
     public AudioGroup maleDeathGroup;
+    public AudioGroup negGroup;
+    public AudioGroup posGroup;
+    public AudioGroup neutGroup;
 
     public static AudioPlayer instance;
 

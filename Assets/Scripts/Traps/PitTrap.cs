@@ -38,8 +38,8 @@ public class PitTrap : BaseTrap {
 		if (human != null && Activated && !human.falling) {
 
 			SortLayer sortLayer = human.gameObject.GetComponent<SortLayer>();
-			sortLayer.offset = -400;
-			human.gameObject.transform.GetChild(0).GetComponent<SortParent>().offset = -401;
+			sortLayer.offset = -6000;
+			human.gameObject.transform.GetChild(0).GetComponent<SortParent>().offset = -6001;
 
 			Vector3 humanpos = human.transform.position;
 			Vector3 newPos = Vector3.Lerp(humanpos, gameObject.transform.position, 0.1f);

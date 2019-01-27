@@ -67,7 +67,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: -5000
   m_Sprite: {fileID: 21300000, guid: 59959e4c31994a34eb57a20114b715bd, type: 3}
   m_Color: {r: 0.21176472, g: 0.49411768, b: 0.77647066, a: 1}
   m_FlipX: 0
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae79eed6bd050084ba418dfb236732b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomCoords: {x: 0, y: 0}
+  roomCoords: {x: 0, y: 2}
   activatedSprite: {fileID: 21300000, guid: efe8f92bcaf6d774c9a51000f8cdbca2, type: 3}
   disabledSprite: {fileID: 21300000, guid: 3a62c9829007fb7458632c9a5457b057, type: 3}
   bloodyActivatedSprite: {fileID: 21300000, guid: efe8f92bcaf6d774c9a51000f8cdbca2,

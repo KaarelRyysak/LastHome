@@ -124,6 +124,7 @@ public class Human : MonoBehaviour
 
     IEnumerator Flee()
     {
+        AudioPlayer.instance.negGroup.Play();
         Room target = house.RandomRoom;
         while (target == currentRoom)
         {
@@ -143,6 +144,8 @@ public class Human : MonoBehaviour
             pos = new Vector3(Random.Range(pos.x - 4, pos.x + 4), Random.Range(pos.y - 4, pos.y + 4));
             yield return LerpMove(transform.position, pos);
             yield return new WaitForSeconds(Random.Range(0f, 3f));
+
+            AudioPlayer.instance.neutGroup.Play();
         }
     }
 
@@ -170,6 +173,7 @@ public class Human : MonoBehaviour
             else
             {
                 trust.Value += trustGainPerDoor;
+                AudioPlayer.instance.posGroup.Play();
             }
 
             yield return LerpMove(transform.position, Vector3.Lerp(currentRoom.transform.position, room.transform.position, 0.6f));
@@ -238,7 +242,7 @@ public class Human : MonoBehaviour
             yield return null;
         }
         gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
-        while (gameObject.transform.localPosition.y >= -0.988f)
+        while (gameObject.transform.localPosition.y >= -0.488f)
         {
             gameObject.transform.Translate(Vector3.down * fallingSpeed * Time.deltaTime);
             gameObject.transform.Rotate(Vector3.forward * 0.1f * Time.deltaTime);
