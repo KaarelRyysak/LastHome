@@ -20,8 +20,10 @@ public class Door : MonoBehaviour {
 		//Change sprite
 		if (open) {
 			spriteRenderer.sprite = openSprite;
+            AudioPlayer.instance.openDoorGroup.Play();
 		} else {
 			spriteRenderer.sprite = closedSprite;
-		}
+            AudioPlayer.instance.closeDoorGroup.Play();
+        }
 	}
 }

@@ -4,11 +4,13 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour {
 	public static SpawnManager instance;
 	public Human humanPrefab;
-	public List<Wave> waves;
 	private float lastSpawn;
 	public int numOfAlive;
-	private int waveIndex;
+    public int peopleSpawnedLastWave;
+    public int peopleToSpawn = 0;
 	private bool waveSpawned;
+    public int cooldownBetweenSpawns;
+    
 
 	public List<Sprite> maleHeads;
 	public List<Sprite> femaleHeads;
@@ -19,28 +21,59 @@ public class SpawnManager : MonoBehaviour {
 
 		lastSpawn = Time.time;
 
-		waveIndex = 0;
+        waveSpawned = true;
+
+        peopleSpawnedLastWave = 2;
 
 		numOfAlive = 0;
 	}
 
 	void Update() {
 		if (!waveSpawned) {
-			if (waveIndex < waves.Count && Time.time > lastSpawn + waves[waveIndex].Cooldown) {
-				lastSpawn = Time.time;
-				waves[waveIndex].Count--;
-				if (waves[waveIndex].Count >= 0) {
-					MakeHuman();
-				} else {
-					waveSpawned = true;
-				}
-			}
-		} else if (waveIndex < waves.Count && numOfAlive == 0) {
-			//Start new wave
-			waveIndex++;
+            if (Time.time > lastSpawn + cooldownBetweenSpawns)
+            {
+                lastSpawn = Time.time;
+                peopleToSpawn--;
+                if (peopleToSpawn >= 0)
+                {
+                    MakeHuman();
+                }
+                else
+                {
+                    waveSpawned = true;
+                }
+            }
+		} else if (numOfAlive == 0) {
+            //Start new wave
+            peopleSpawnedLastWave += 2;
+            peopleToSpawn = peopleSpawnedLastWave;
 			waveSpawned = false;
 		}
-	}
+
+
+        //if (Input.GetKeyDown("1"))
+        //{
+        //    AudioPlayer.instance.clickGroup.Play();
+        //}
+        //if (Input.GetKeyDown("2"))
+        //{
+        //    AudioPlayer.instance.closeDoorGroup.Play();
+        //}
+        //if (Input.GetKeyDown("3"))
+        //{
+        //    AudioPlayer.instance.openDoorGroup.Play();
+        //}
+        //if (Input.GetKeyDown("4"))
+        //{
+        //    AudioPlayer.instance.femaleDeathGroup.Play();
+        //}
+        //if (Input.GetKeyDown("5"))
+        //{
+        //    AudioPlayer.instance.maleDeathGroup.Play();
+        //}
+
+    }
+    
 
 	private void MakeHuman() {
 		Human human = Instantiate(humanPrefab, gameObject.transform.position, gameObject.transform.rotation);
