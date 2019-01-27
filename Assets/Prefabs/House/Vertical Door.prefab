@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6617112474403714039}
   - component: {fileID: 8761178862487266026}
   - component: {fileID: 3271532438164029614}
+  - component: {fileID: 3654585791508872862}
   m_Layer: 0
   m_Name: Vertical Door
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7407395211238444138}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -128,7 +129,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: -0.5}
-    oldSize: {x: 0.29166666, y: 2}
+    oldSize: {x: 1.15625, y: 2}
     newSize: {x: 3.01, y: 3.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -137,3 +138,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.29166666, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &3654585791508872862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7407395211238444138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e2ab3cc6e000f4a8a96198c6437679, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

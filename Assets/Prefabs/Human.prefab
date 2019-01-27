@@ -137,12 +137,13 @@ MonoBehaviour:
   male: 0
   dead: 0
   falling: 0
+  onFire: 0
   speed: 5
   patience: 3
   trustGainPerDoor: 1
   trustLossPerSecondWaiting: 10
-  trustLossPerCorpse: 0
-  trustLossPerActiveTrap: 0
+  trustLossPerCorpse: 100
+  trustLossPerActiveTrap: 50
   idleStrolls: 3
 --- !u!114 &6032597897607204590
 MonoBehaviour:

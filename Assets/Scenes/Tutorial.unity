@@ -380,7 +380,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200.53, y: -288}
+  m_AnchoredPosition: {x: 200.53, y: -337}
   m_SizeDelta: {x: 952.65, y: 312.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1504781247
@@ -524,9 +524,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "You are an evil smart house. Why are you evil? Nobody knows...\r\n\r\nClick
-    on doors and devices to interact.  Discretely dispose of all invading personnel.
-    Make sure nobody sees corpses for you need to keep their trust."
+  m_Text: "You are an evil smart house. Why are you evil? Nobody knows...\r\n\r\n*
+    Click doors and devices to interact.\n* Discretely dispose of all invading personnel.\n*
+    Make sure nobody sees corpses for you need to keep     their trust."
 --- !u!222 &2377890888042089469
 CanvasRenderer:
   m_ObjectHideFlags: 0

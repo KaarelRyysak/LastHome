@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 795786017095888271}
   - component: {fileID: 795786017095888273}
   - component: {fileID: 2642789000217886073}
+  - component: {fileID: 1785767111561799009}
   m_Layer: 0
   m_Name: TrapDoor
   m_TagString: Untagged
@@ -206,3 +207,15 @@ MonoBehaviour:
     type: 3}
   bloodyDisabledSprite: {fileID: 21300000, guid: 3a62c9829007fb7458632c9a5457b057,
     type: 3}
+--- !u!114 &1785767111561799009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795786017095888269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e2ab3cc6e000f4a8a96198c6437679, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

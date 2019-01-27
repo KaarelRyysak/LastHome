@@ -95,8 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 346ba1eaf98c304439d246e0fec06d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activated: 0
-  room: {x: 0, y: 0}
+  roomCoords: {x: 0, y: 0}
   activatedSprite: {fileID: 21300000, guid: cbb84732bb08b6245bdc4008b4c79bef, type: 3}
   disabledSprite: {fileID: 21300000, guid: cbb84732bb08b6245bdc4008b4c79bef, type: 3}
   bloodyActivatedSprite: {fileID: 21300000, guid: f894cff1ef2fa2f4c99adf2ea65b0939,
