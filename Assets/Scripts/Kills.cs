@@ -18,7 +18,7 @@ public class Kills : MonoBehaviour
         set
         {
             this.value = value;
-            killsText.text = "Kills " + value;
+            killsText.text = "Kills: " + value;
         }
     }
 
