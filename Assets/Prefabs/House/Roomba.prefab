@@ -94,7 +94,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7533671dacb8a7742bf33301faaa20f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startRoom: {x: 0, y: 0}
+  startRoom: {x: 0, y: 3}
+  speed: 3
+  patience: 5
 --- !u!58 &292828871608540428
 CircleCollider2D:
   m_ObjectHideFlags: 0
