@@ -39,7 +39,7 @@ public class fireplace : MonoBehaviour
     {
         Human human = collision.gameObject.GetComponent<Human>();
         //If collided with human
-        if (human != null && activated)
+        if (human != null && activated && !human.onFire)
         {
             human.StartCoroutine(human.OnFire(firePrefab, ashPrefab));
         }
