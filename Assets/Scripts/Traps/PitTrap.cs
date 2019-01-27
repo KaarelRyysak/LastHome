@@ -47,7 +47,7 @@ public class PitTrap : BaseTrap {
 
 			Vector3 thisPos = gameObject.transform.position;
 
-			if (Vector3.Magnitude(thisPos - newPos) < 0.2f) {
+			if (Vector3.Magnitude(thisPos - newPos) < 0.3f) {
 				Drop(human);
 
 			} else {

@@ -157,8 +157,18 @@ public class Human : MonoBehaviour {
 		if (dead) {
 			return;
 		}
-		
-		dead = true;
+
+        if (male)
+        {
+            AudioPlayer.instance.maleDeathGroup.Play();
+        }
+        else
+        {
+            AudioPlayer.instance.femaleDeathGroup.Play();
+        }
+        Kills.instance.Value += 1;
+
+        dead = true;
 		foreach (Human human in currentRoom.humans) {
 			if (human != this && human != dead) {
 				human.Repulse();
