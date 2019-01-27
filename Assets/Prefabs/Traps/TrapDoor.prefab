@@ -123,7 +123,7 @@ Transform:
   m_GameObject: {fileID: 795786017095888269}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 20, y: 30.07, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.9216102, y: 1.9216102, z: 1.9216102}
   m_Children:
   - {fileID: 1203981497}
   m_Father: {fileID: 0}
@@ -190,7 +190,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.7985382}
+  m_Offset: {x: 0.005044788, y: -0.7738469}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5000001, y: 1.094851}
@@ -201,7 +201,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.87, y: 1.2552147}
+  m_Size: {x: 1.8084686, y: 1.278418}
   m_EdgeRadius: 0
 --- !u!114 &2642789000217886073
 MonoBehaviour:
@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activated: 0
+  room: {x: 0, y: 0}
   activatedSprite: {fileID: 21300000, guid: efe8f92bcaf6d774c9a51000f8cdbca2, type: 3}
   disabledSprite: {fileID: 21300000, guid: 3a62c9829007fb7458632c9a5457b057, type: 3}
   bloodyActivatedSprite: {fileID: 21300000, guid: efe8f92bcaf6d774c9a51000f8cdbca2,
