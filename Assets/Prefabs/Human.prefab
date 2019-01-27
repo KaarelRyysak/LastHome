@@ -138,6 +138,9 @@ MonoBehaviour:
   pitTrap: {fileID: 0}
   speed: 5
   patience: 3
+  trustGainPerDoor: 1
+  trustLossPerSecondWaiting: 10
+  idleStrolls: 3
 --- !u!114 &6032597897607204590
 MonoBehaviour:
   m_ObjectHideFlags: 0

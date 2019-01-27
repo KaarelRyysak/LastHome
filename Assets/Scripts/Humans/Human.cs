@@ -7,15 +7,12 @@ public class Human : MonoBehaviour {
 		Walking
 	}
 
-    public bool male;
-
-    private bool dead;
-
-    public bool falling;
-    private float fallingSpeed = 10f;
-    public GameObject pitTrap;
-
-    private bool hiddenBody;
+	public bool male;
+	bool dead = false;
+	bool hiddenBody = false;
+	public bool falling = false;
+	float fallingSpeed = 10f;
+	public GameObject pitTrap;
 
 
 	Room currentRoom;
@@ -24,29 +21,32 @@ public class Human : MonoBehaviour {
 	State state = State.Idle;
 
 	public float speed, patience;
+	public float trustGainPerDoor, trustLossPerSecondWaiting;
+	public int idleStrolls;
 
-    private void Awake()
-    {
-        dead = false;
-        falling = false;
-    }
-
-
-    void Start() {
+	void Start() {
 		house = House.instance;
 		trust = Trust.instance;
 		currentRoom = house.StartRoom;
 
 		StartCoroutine(AI());
-        hiddenBody = false;
 	}
 
 	IEnumerator AI() {
-		while (state == State.Idle) {
-			yield return new WaitForSeconds(3);
-			state = State.Walking;
-			yield return StartCoroutine(PathToRoom());
-			state = State.Idle;
+		while (true) {
+			yield return Idle();
+			Debug.Log("Stoppd idling");
+			yield return PathToRoom();
+			Debug.Log("Stoppd pathing");
+		}
+	}
+
+	IEnumerator Idle() {
+		for (int i = 0; i < idleStrolls; i++) {
+			Vector3 pos = currentRoom.transform.position;
+			pos = new Vector3(Random.Range(pos.x - 4, pos.x + 4), Random.Range(pos.y - 4, pos.y + 4));
+			yield return LerpMove(transform.position, pos);
+			yield return new WaitForSeconds(Random.Range(0, 3));
 		}
 	}
 
@@ -63,13 +63,13 @@ public class Human : MonoBehaviour {
 			float waitEnd = Time.time + patience;
 
 			while (!door.open && Time.time < waitEnd) {
-				trust.Value -= 10 * Time.deltaTime;
+				trust.Value -= trustLossPerSecondWaiting * Time.deltaTime;
 				yield return null;
 			}
 			if (!door.open) { //Out of patience
 				yield break;
 			} else {
-				trust.Value += 1;
+				trust.Value += trustGainPerDoor;
 			}
 
 			yield return LerpMove(transform.position, Vector3.Lerp(currentRoom.transform.position, room.transform.position, 0.6f));
@@ -91,38 +91,32 @@ public class Human : MonoBehaviour {
 
 	public void Die() {
 
-        if (!dead)
-        {
-            dead = true;
+		if (!dead) {
+			dead = true;
 
-            SpawnManager.instance.numOfAlive -= 1;
-            StopAllCoroutines();
+			SpawnManager.instance.numOfAlive -= 1;
+			StopAllCoroutines();
 
-            //Kui pit trap-i pole kasutusel
-            if (pitTrap == null)
-            {
-                gameObject.transform.Rotate(new Vector3(0, 0, 90));
-                Destroy(this);
-            }
+			//Kui pit trap-i pole kasutusel
+			if (pitTrap == null) {
+				gameObject.transform.Rotate(new Vector3(0, 0, 90));
+				Destroy(this);
+			}
 
-        }
+		}
 	}
 
-    public void Update()
-    {
-        if (falling)
-        {
-            gameObject.transform.Translate(Vector3.down * fallingSpeed * Time.deltaTime);
-            gameObject.transform.Rotate(Vector3.forward * 0.1f * Time.deltaTime);
+	public void Update() {
+		if (falling) {
+			gameObject.transform.Translate(Vector3.down * fallingSpeed * Time.deltaTime);
+			gameObject.transform.Rotate(Vector3.forward * 0.1f * Time.deltaTime);
 
-            if (!hiddenBody && gameObject.transform.position.y <= pitTrap.transform.position.y)
-            {
-                gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
-            }
-            if (gameObject.transform.localPosition.y < -0.988f)
-            {
-                Destroy(gameObject);
-            }
-        }
-    }
+			if (!hiddenBody && gameObject.transform.position.y <= pitTrap.transform.position.y) {
+				gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+			}
+			if (gameObject.transform.localPosition.y < -0.988f) {
+				Destroy(gameObject);
+			}
+		}
+	}
 }
