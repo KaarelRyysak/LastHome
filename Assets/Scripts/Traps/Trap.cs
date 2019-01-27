@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
-public class Trap : MonoBehaviour {
-	public bool activated;
+public class Trap : BaseTrap {
 	private bool bloody;
 	public Sprite activatedSprite;
 	public Sprite disabledSprite;
@@ -9,7 +8,7 @@ public class Trap : MonoBehaviour {
 	public Sprite bloodyDisabledSprite;
 	private SpriteRenderer spriteRenderer;
 
-	void Start() {
+	void Awake() {
 		spriteRenderer = GetComponent<SpriteRenderer>();
 
 		//Inactive on startup

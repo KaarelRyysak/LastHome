@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PitTrap : MonoBehaviour {
+public class PitTrap : BaseTrap {
 	private GameObject border;
-	public bool activated;
 	private bool bloody;
 	public Sprite activatedSprite;
 	public Sprite disabledSprite;
@@ -12,8 +9,9 @@ public class PitTrap : MonoBehaviour {
 	public Sprite bloodyDisabledSprite;
 	private SpriteRenderer spriteRenderer;
 
-	void Start() {
+	void Awake() {
 		spriteRenderer = GetComponent<SpriteRenderer>();
+		border = gameObject.transform.GetChild(0).gameObject;
 
 		//Inactive on startup
 		activated = false;
@@ -30,16 +28,10 @@ public class PitTrap : MonoBehaviour {
 		} else if (!activated && !bloody) {
 			spriteRenderer.sprite = disabledSprite;
 		} else if (activated && bloody) {
-
 			spriteRenderer.sprite = bloodyActivatedSprite;
 		} else {
 			spriteRenderer.sprite = bloodyDisabledSprite;
 		}
-	}
-
-
-	private void Awake() {
-		border = gameObject.transform.GetChild(0).gameObject;
 	}
 
 	private void OnTriggerStay2D(Collider2D collision) {
