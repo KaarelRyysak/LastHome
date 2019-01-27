@@ -18,10 +18,16 @@ public class Human : MonoBehaviour {
 	House house;
 	Trust trust;
 	State state = State.Idle;
+	SpriteRenderer headRenderer, bodyRenderer;
 
 	public float speed, patience;
 	public float trustGainPerDoor, trustLossPerSecondWaiting, trustLossPerCorpse, trustLossPerActiveTrap;
 	public int idleStrolls;
+
+	void Awake() {
+		headRenderer = GetComponent<SpriteRenderer>();
+		bodyRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+	}
 
 	void Start() {
 		house = House.instance;
@@ -143,6 +149,8 @@ public class Human : MonoBehaviour {
 
 	IEnumerator LerpMove(Vector2 from, Vector2 to) {
 		Vector2 direction = to - from;
+		headRenderer.flipX = direction.x < 0;
+		bodyRenderer.flipX = headRenderer.flipX;
 		float duration = direction.magnitude / speed;
 		float startTime = Time.time;
 		float endTime = startTime + duration;
