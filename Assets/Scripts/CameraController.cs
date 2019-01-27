@@ -40,7 +40,7 @@ public class CameraController : MonoBehaviour {
         //Get mouse input
         Cursor.lockState = CursorLockMode.None;
 
-        if (Input.GetMouseButton(2))
+        if (Input.GetMouseButton(2) || Input.GetMouseButton(1))
         {
             Cursor.lockState = CursorLockMode.Locked;
             x += GetInputForAxis("Mouse X", Vector3.right, dragSpeed).x;

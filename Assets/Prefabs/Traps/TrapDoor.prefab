@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1203981497}
   - component: {fileID: 1203981499}
-  - component: {fileID: 1203981498}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -68,7 +67,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -3
   m_Sprite: {fileID: 21300000, guid: 59959e4c31994a34eb57a20114b715bd, type: 3}
   m_Color: {r: 0.21176472, g: 0.49411768, b: 0.77647066, a: 1}
   m_FlipX: 0
@@ -80,20 +79,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1203981498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1203981496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53079ccc1f084964eaef61bad8e62483, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  updated: 0
-  offset: 5
 --- !u!1 &795786017095888269
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,7 +91,6 @@ GameObject:
   - component: {fileID: 795786017095888271}
   - component: {fileID: 795786017095888273}
   - component: {fileID: 2642789000217886073}
-  - component: {fileID: 9014626251063072192}
   m_Layer: 0
   m_Name: TrapDoor
   m_TagString: Untagged
@@ -122,7 +106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 795786017095888269}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20, y: 30.07, z: 0}
+  m_LocalPosition: {x: -0.6, y: 23.5, z: 0}
   m_LocalScale: {x: 1.9216102, y: 1.9216102, z: 1.9216102}
   m_Children:
   - {fileID: 1203981497}
@@ -165,7 +149,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -9999
   m_Sprite: {fileID: 21300000, guid: efe8f92bcaf6d774c9a51000f8cdbca2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -215,25 +199,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae79eed6bd050084ba418dfb236732b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activated: 0
-  room: {x: 0, y: 0}
+  roomCoords: {x: 0, y: 0}
   activatedSprite: {fileID: 21300000, guid: efe8f92bcaf6d774c9a51000f8cdbca2, type: 3}
   disabledSprite: {fileID: 21300000, guid: 3a62c9829007fb7458632c9a5457b057, type: 3}
   bloodyActivatedSprite: {fileID: 21300000, guid: efe8f92bcaf6d774c9a51000f8cdbca2,
     type: 3}
   bloodyDisabledSprite: {fileID: 21300000, guid: 3a62c9829007fb7458632c9a5457b057,
     type: 3}
---- !u!114 &9014626251063072192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 795786017095888269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71d7508995dbecb4d804e992a22c81ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  updated: 0
-  offset: -500
