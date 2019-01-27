@@ -193,6 +193,7 @@ public class Human : MonoBehaviour {
 			gameObject.transform.Rotate(Vector3.forward * 0.1f * Time.deltaTime);
 			yield return null;
 		}
+		currentRoom.humans.Remove(this);
 		Destroy(gameObject);
 	}
 }
