@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bdd56271a4ee214ba7dd3c5dab71f85, type: 3}
   m_Name: CloseDoorGroup
   m_EditorClassIdentifier: 
-  VolumeMin: 1
-  VolumeMax: 1
-  PitchMin: 1
-  PitchMax: 1
+  VolumeMin: 0.386
+  VolumeMax: 0.544
+  PitchMin: 0.485
+  PitchMax: 1.524
   Cooldown: 0.1
-  audioClips: []
+  audioClips:
+  - {fileID: 8300000, guid: bb74260dafc38bc43a3641deefe52a1b, type: 3}

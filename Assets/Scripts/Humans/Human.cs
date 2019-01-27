@@ -11,6 +11,7 @@ public class Human : MonoBehaviour {
 	public bool male;
 	public bool dead = false;
 	public bool falling = false;
+    public bool onFire = false;
 	const float fallingSpeed = 10f;
 
 
@@ -212,11 +213,39 @@ public class Human : MonoBehaviour {
 
     public IEnumerator OnFire(GameObject firePrefab, GameObject ashPrefab)
     {
-        GameObject.Instantiate(firePrefab, gameObject.transform.position, gameObject.transform.rotation, gameObject.transform);
-        yield return new WaitForSeconds(Random.Range(3f, 4f));
-        GameObject.Instantiate(ashPrefab, gameObject.transform.position, gameObject.transform.rotation);
-        Die();
+        if (!onFire)
+        {
+            onFire = true;
 
-        Destroy(gameObject);
+            if (male)
+            {
+                AudioPlayer.instance.maleDeathGroup.Play();
+            }
+            else
+            {
+                AudioPlayer.instance.femaleDeathGroup.Play();
+            }
+            Kills.instance.Value += 1;
+
+            dead = true;
+            foreach (Human human in currentRoom.humans)
+            {
+                if (human != this && human != dead)
+                {
+                    human.Repulse();
+                    trust.Value -= trustLossPerCorpse;
+                }
+            }
+
+            SpawnManager.instance.numOfAlive--;
+            Kills.instance.Value++;
+
+            GameObject.Instantiate(firePrefab, gameObject.transform.position, gameObject.transform.rotation, gameObject.transform);
+            yield return new WaitForSeconds(Random.Range(3f, 4f));
+            GameObject.Instantiate(ashPrefab, gameObject.transform.position, gameObject.transform.rotation);
+            
+
+            Destroy(gameObject);
+        }
     }
 }

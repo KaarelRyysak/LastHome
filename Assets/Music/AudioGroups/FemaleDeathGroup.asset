@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bdd56271a4ee214ba7dd3c5dab71f85, type: 3}
   m_Name: FemaleDeathGroup
   m_EditorClassIdentifier: 
-  VolumeMin: 1
-  VolumeMax: 1
+  VolumeMin: 0.227
+  VolumeMax: 0.313
   PitchMin: 1
   PitchMax: 1
   Cooldown: 0.1
-  audioClips: []
+  audioClips:
+  - {fileID: 8300000, guid: 19f1c9c929c10554395fbf0cc993ca93, type: 3}
+  - {fileID: 8300000, guid: 52e0b02cbdbd2254187bc251648589c3, type: 3}
+  - {fileID: 8300000, guid: 51da3704983ba8b40bf4c0ef85403d08, type: 3}
