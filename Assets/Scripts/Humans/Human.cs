@@ -11,6 +11,7 @@ public class Human : MonoBehaviour {
 	public bool male;
 	public bool dead = false;
 	public bool falling = false;
+	public bool onFire = false;
 	const float fallingSpeed = 10f;
 
 
@@ -180,11 +181,12 @@ public class Human : MonoBehaviour {
 			}
 		}
 
-		SpawnManager.instance.numOfAlive--;
 		Kills.instance.Value++;
+		SpawnManager.instance.numOfAlive--;
 		StopAllCoroutines();
 
 		gameObject.transform.Rotate(new Vector3(0, 0, 90));
+
 	}
 
 	public IEnumerator Fall(GameObject pitTrap) {
@@ -206,11 +208,29 @@ public class Human : MonoBehaviour {
 	}
 
 	public IEnumerator OnFire(GameObject firePrefab, GameObject ashPrefab) {
-		Instantiate(firePrefab, gameObject.transform.position, gameObject.transform.rotation, gameObject.transform);
-		yield return new WaitForSeconds(Random.Range(3f, 4f));
-		Instantiate(ashPrefab, gameObject.transform.position, gameObject.transform.rotation);
-		Die();
+		onFire = true;
 
+		if (male) {
+			AudioPlayer.instance.maleDeathGroup.Play();
+		} else {
+			AudioPlayer.instance.femaleDeathGroup.Play();
+		}
+
+		dead = true;
+		foreach (Human human in currentRoom.humans) {
+			if (human != this && human != dead) {
+				human.Repulse();
+				trust.Value -= trustLossPerCorpse;
+			}
+		}
+
+		SpawnManager.instance.numOfAlive--;
+
+		GameObject fire = Instantiate(firePrefab, gameObject.transform.position, gameObject.transform.rotation, gameObject.transform);
+		fire.transform.Rotate(0, 0, -90);
+		yield return new WaitForSeconds(Random.Range(3f, 4f));
+		GameObject ash = Instantiate(ashPrefab, gameObject.transform.position, gameObject.transform.rotation);
+		ash.transform.Rotate(0, 0, -90);
 		Destroy(gameObject);
 	}
 }

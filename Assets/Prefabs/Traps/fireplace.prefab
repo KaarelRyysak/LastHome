@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3696597499606338118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 21.36, y: 30.73, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.772, y: 1.772, z: 1.772}
   m_Children:
   - {fileID: 997679823275367244}
   m_Father: {fileID: 0}
@@ -141,6 +141,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePrefab: {fileID: 4509382321282552919, guid: 3b26ab4e1989306489e180d1743edd1b,
+    type: 3}
+  ashPrefab: {fileID: 7836552302156279745, guid: 0c2b63197968af54da6d6750fe7f8933,
     type: 3}
 --- !u!1001 &3696597499740294936
 PrefabInstance:

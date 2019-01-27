@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bdd56271a4ee214ba7dd3c5dab71f85, type: 3}
   m_Name: ClickGroup
   m_EditorClassIdentifier: 
-  VolumeMin: 1
-  VolumeMax: 1
+  VolumeMin: 0.206
+  VolumeMax: 0.316
   PitchMin: 1
   PitchMax: 1
   Cooldown: 0.1
-  audioClips: []
+  audioClips:
+  - {fileID: 8300000, guid: bec5ca3cf2c59b04c8122ca987c39431, type: 3}
+  - {fileID: 8300000, guid: f30ab71eb409ccd40ad3b81cb3e63e34, type: 3}
+  - {fileID: 8300000, guid: 8a8e9869fa4c41742b61d6945f90a517, type: 3}
+  - {fileID: 8300000, guid: 33680d2e662b23e4fa6b0fd8b5e28f09, type: 3}

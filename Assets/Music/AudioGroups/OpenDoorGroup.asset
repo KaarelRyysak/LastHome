@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bdd56271a4ee214ba7dd3c5dab71f85, type: 3}
   m_Name: OpenDoorGroup
   m_EditorClassIdentifier: 
-  VolumeMin: 1
-  VolumeMax: 1
-  PitchMin: 1
-  PitchMax: 1
+  VolumeMin: 0.395
+  VolumeMax: 0.512
+  PitchMin: 0.964
+  PitchMax: 1.067
   Cooldown: 0.1
-  audioClips: []
+  audioClips:
+  - {fileID: 8300000, guid: 2611c25e510ce7e449da1d776451e8b7, type: 3}
