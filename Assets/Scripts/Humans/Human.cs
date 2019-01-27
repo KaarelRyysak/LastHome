@@ -4,7 +4,8 @@ using UnityEngine;
 public class Human : MonoBehaviour {
 	enum State {
 		Idle,
-		Walking
+		Walking,
+		Fleeing
 	}
 
 	public bool male;
@@ -48,16 +49,34 @@ public class Human : MonoBehaviour {
 		//Check for active traps
 	}
 
+	public void Attract(Room room) {
+		if (state != State.Fleeing) {
+			state = State.Walking;
+			StopAllCoroutines();
+			StartCoroutine(MoveTowards(room));
+		}
+	}
+
 	public void Repulse() {
-		StopAllCoroutines();
-		StartCoroutine(Flee());
+		if (state != State.Fleeing) {
+			state = State.Fleeing;
+			StopAllCoroutines();
+			StartCoroutine(Flee());
+		}
 	}
 
 	IEnumerator AI() {
 		while (true) {
+			state = State.Idle;
 			yield return Idle();
+			state = State.Walking;
 			yield return PathToRoom(house.RandomRoom);
 		}
+	}
+
+	IEnumerator MoveTowards(Room room) {
+		yield return PathToRoom(room);
+		StartCoroutine(AI());
 	}
 
 	IEnumerator Flee() {
@@ -65,7 +84,9 @@ public class Human : MonoBehaviour {
 		while (target == currentRoom) {
 			target = house.RandomRoom;
 		}
-		yield return PathToRoom(target);
+		speed *= 2;
+		yield return PathToRoom(target, house.GetPath(currentRoom, target, true) != null);
+		speed /= 2;
 		StartCoroutine(AI());
 	}
 
@@ -78,10 +99,10 @@ public class Human : MonoBehaviour {
 		}
 	}
 
-	IEnumerator PathToRoom(Room target) {
+	IEnumerator PathToRoom(Room target, bool respectDoors = false) {
 		//Extend path to include standing before and after doors
 		Vector3 location = transform.position;
-		foreach (Room room in house.GetPath(currentRoom, target, false)) {
+		foreach (Room room in house.GetPath(currentRoom, target, respectDoors)) {
 			yield return LerpMove(transform.position, Vector3.Lerp(currentRoom.transform.position, room.transform.position, 0.4f));
 
 			//Only proceed if door is open
