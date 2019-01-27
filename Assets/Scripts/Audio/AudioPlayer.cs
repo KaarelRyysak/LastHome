@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class AudioPlayer : MonoBehaviour
 {
-
-    public AudioGroup deathGroup;
+    
+    public AudioGroup clickGroup;
+    public AudioGroup closeDoorGroup;
+    public AudioGroup openDoorGroup;
+    public AudioGroup femaleDeathGroup;
+    public AudioGroup maleDeathGroup;
 
     public static AudioPlayer instance;
 

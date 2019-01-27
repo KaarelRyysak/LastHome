@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour {
 	public float rightBound = 15f;
 	public float panSpeed = 1f;
 	public float moveSpeed = 100f;
+    public float dragSpeed = 1f;
 
 	[Header("This is a percentage of the whole screen")]
 	public float panEdgeSize = 0.15f;
@@ -29,12 +30,27 @@ public class CameraController : MonoBehaviour {
 	}
 
 	void Update() {
-		//Get movement change input
-		float x = Input.GetAxis("Horizontal");
+        
+
+        //Get movement change input
+        float x = Input.GetAxis("Horizontal");
 		float y = Input.GetAxis("Vertical");
 
-		//Screen panning using mouse
-		if (Input.mousePosition.x >= Screen.width - Screen.width * panEdgeSize) {
+
+        //Get mouse input
+        Cursor.lockState = CursorLockMode.None;
+
+        if (Input.GetMouseButton(2))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            x += GetInputForAxis("Mouse X", Vector3.right, dragSpeed).x;
+            y += GetInputForAxis("Mouse Y", Vector3.up, dragSpeed).y;
+        }
+
+
+
+        //Screen panning using mouse
+        if (Input.mousePosition.x >= Screen.width - Screen.width * panEdgeSize) {
 			x += panSpeed;
 		}
 
@@ -74,4 +90,17 @@ public class CameraController : MonoBehaviour {
 
 
 	}
+
+    Vector3 GetInputForAxis(string Axis, Vector3 dir, float response)
+    {
+        float move = 0;
+        float speed = Input.GetAxis(Axis);
+        move += speed * response;
+
+        if (move != 0)
+        {
+            return dir * move;
+        }
+        return Vector3.zero;
+    }
 }
