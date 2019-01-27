@@ -9,10 +9,8 @@ public class Human : MonoBehaviour {
 
 	public bool male;
 	bool dead = false;
-	bool hiddenBody = false;
 	public bool falling = false;
-	float fallingSpeed = 10f;
-	public GameObject pitTrap;
+	const float fallingSpeed = 10f;
 
 
 	Room currentRoom;
@@ -35,9 +33,7 @@ public class Human : MonoBehaviour {
 	IEnumerator AI() {
 		while (true) {
 			yield return Idle();
-			Debug.Log("Stoppd idling");
 			yield return PathToRoom();
-			Debug.Log("Stoppd pathing");
 		}
 	}
 
@@ -46,7 +42,7 @@ public class Human : MonoBehaviour {
 			Vector3 pos = currentRoom.transform.position;
 			pos = new Vector3(Random.Range(pos.x - 4, pos.x + 4), Random.Range(pos.y - 4, pos.y + 4));
 			yield return LerpMove(transform.position, pos);
-			yield return new WaitForSeconds(Random.Range(0, 3));
+			yield return new WaitForSeconds(Random.Range(0f, 3f));
 		}
 	}
 
@@ -90,33 +86,29 @@ public class Human : MonoBehaviour {
 	}
 
 	public void Die() {
-
 		if (!dead) {
 			dead = true;
 
 			SpawnManager.instance.numOfAlive -= 1;
 			StopAllCoroutines();
 
-			//Kui pit trap-i pole kasutusel
-			if (pitTrap == null) {
-				gameObject.transform.Rotate(new Vector3(0, 0, 90));
-				Destroy(this);
-			}
-
+			gameObject.transform.Rotate(new Vector3(0, 0, 90));
 		}
 	}
 
-	public void Update() {
-		if (falling) {
+	public IEnumerator Fall(GameObject pitTrap) {
+		falling = true;
+		while (gameObject.transform.position.y > pitTrap.transform.position.y) {
 			gameObject.transform.Translate(Vector3.down * fallingSpeed * Time.deltaTime);
 			gameObject.transform.Rotate(Vector3.forward * 0.1f * Time.deltaTime);
-
-			if (!hiddenBody && gameObject.transform.position.y <= pitTrap.transform.position.y) {
-				gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
-			}
-			if (gameObject.transform.localPosition.y < -0.988f) {
-				Destroy(gameObject);
-			}
+			yield return null;
 		}
+		gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+		while (gameObject.transform.localPosition.y >= -0.988f) {
+			gameObject.transform.Translate(Vector3.down * fallingSpeed * Time.deltaTime);
+			gameObject.transform.Rotate(Vector3.forward * 0.1f * Time.deltaTime);
+			yield return null;
+		}
+		Destroy(gameObject);
 	}
 }
