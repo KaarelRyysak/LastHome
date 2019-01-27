@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9104505900320920226}
   - component: {fileID: 292828871608540428}
   - component: {fileID: 5969543075364307450}
+  - component: {fileID: 4135187620911311788}
   m_Layer: 0
   m_Name: Roomba
   m_TagString: Untagged
@@ -112,7 +113,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.8
+  m_Radius: 0.9
 --- !u!50 &5969543075364307450
 Rigidbody2D:
   serializedVersion: 4
@@ -134,3 +135,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4135187620911311788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4260027445495493299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d7508995dbecb4d804e992a22c81ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updated: 1
+  offset: 0
