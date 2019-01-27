@@ -62,7 +62,5 @@ public class PitTrap : BaseTrap {
 		human.transform.parent = gameObject.transform;
 		human.StartCoroutine(human.Fall(border));
 		human.transform.parent = border.transform;
-
-		human.Die();
 	}
 }
