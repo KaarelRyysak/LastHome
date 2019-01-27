@@ -189,6 +189,8 @@ public class Human : MonoBehaviour {
 		StopAllCoroutines();
 
 		gameObject.transform.Rotate(new Vector3(0, 0, 90));
+
+        Kills.instance.Value++;
 	}
 
 	public IEnumerator Fall(GameObject pitTrap) {
