@@ -8,7 +8,7 @@ public class Roomba : MonoBehaviour {
 	House house;
 	SpriteRenderer spriteRenderer;
 	Camera cam;
-	bool bodyCarried = false;
+	public bool bodyCarried = false;
 	bool hasBeenClicked = false;
 
 	void Awake() {
@@ -22,25 +22,34 @@ public class Roomba : MonoBehaviour {
 		StartCoroutine(Wobble());
 	}
 
-	void OnMouseDown() {
-		StartCoroutine(DelayedClick());
-	}
-
-	IEnumerator DelayedClick() {
-		yield return null;
-		hasBeenClicked = !hasBeenClicked;
-	}
-
 	void Update() {
-		if (Input.GetButtonDown("Fire1") && hasBeenClicked) {
-			hasBeenClicked = false;
+		if (Input.GetButtonDown("Fire1")) {
+			if (hasBeenClicked) {
+				hasBeenClicked = false;
 
-			//Interrupt previous stuff
-			StopAllCoroutines();
-			StartCoroutine(Wobble());
+				//Interrupt previous stuff
+				StopAllCoroutines();
+				StartCoroutine(Wobble());
 
-			//Move to the place
-			StartCoroutine(MoveTo(cam.ScreenToWorldPoint(Input.mousePosition)));
+				//Move to the place
+				StartCoroutine(MoveTo(cam.ScreenToWorldPoint(Input.mousePosition)));
+			} else {
+				Collider2D[] results = Physics2D.OverlapPointAll(cam.ScreenToWorldPoint(Input.mousePosition));
+				foreach (Collider2D result in results) {
+					if (result.CompareTag("Roomba")) {
+						hasBeenClicked = !hasBeenClicked;
+						break;
+					}
+				}
+			}
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		if (other.CompareTag("Player") && other.GetComponent<Human>().dead && !bodyCarried) {
+			bodyCarried = true;
+			other.transform.parent = transform;
+			other.transform.position = transform.position + new Vector3(0, 0.02f);
 		}
 	}
 
@@ -79,6 +88,9 @@ public class Roomba : MonoBehaviour {
 
 			yield return LerpMove(transform.position, Vector3.Lerp(currentRoom.transform.position, room.transform.position, 0.6f));
 			currentRoom = room;
+			if (bodyCarried) {
+				GetComponentInChildren<Human>().UpdateRoom(room);
+			}
 		}
 	}
 
@@ -96,7 +108,7 @@ public class Roomba : MonoBehaviour {
 
 	IEnumerator Wobble() {
 		while (true) {
-			yield return new WaitForSeconds(1);
+			yield return new WaitForSeconds(0.5f);
 			spriteRenderer.flipX = !spriteRenderer.flipX;
 		}
 	}

@@ -39,7 +39,7 @@ public class Human : MonoBehaviour {
 		StartCoroutine(AI());
 	}
 
-	void UpdateRoom(Room room) {
+	public void UpdateRoom(Room room) {
 		currentRoom.humans.Remove(this);
 		currentRoom = room;
 		currentRoom.humans.Add(this);
@@ -47,6 +47,10 @@ public class Human : MonoBehaviour {
 	}
 
 	void OnEnterRoom() {
+		if (dead) {
+			return;
+		}
+
 		//Check for dead humans
 		foreach (Human human in currentRoom.humans) {
 			if (human.dead) {
