@@ -9,6 +9,14 @@ public class Human : MonoBehaviour {
 
     public bool male;
 
+    private bool dead;
+
+    public bool falling;
+    private float fallingSpeed = 10f;
+    public GameObject pitTrap;
+
+    private bool hiddenBody;
+
 
 	Room currentRoom;
 	House house;
@@ -16,11 +24,11 @@ public class Human : MonoBehaviour {
 	State state = State.Idle;
 
 	public float speed, patience;
-	public GameObject corpse;
 
     private void Awake()
     {
-        
+        dead = false;
+        falling = false;
     }
 
 
@@ -30,6 +38,7 @@ public class Human : MonoBehaviour {
 		currentRoom = house.StartRoom;
 
 		StartCoroutine(AI());
+        hiddenBody = false;
 	}
 
 	IEnumerator AI() {
@@ -81,10 +90,39 @@ public class Human : MonoBehaviour {
 	}
 
 	public void Die() {
-		Instantiate(corpse, gameObject.transform.position, corpse.transform.rotation);
 
-		SpawnManager.instance.numOfAlive -= 1;
+        if (!dead)
+        {
+            dead = true;
 
-		Destroy(gameObject);
+            SpawnManager.instance.numOfAlive -= 1;
+            StopAllCoroutines();
+
+            //Kui pit trap-i pole kasutusel
+            if (pitTrap == null)
+            {
+                gameObject.transform.Rotate(new Vector3(0, 0, 90));
+                Destroy(this);
+            }
+
+        }
 	}
+
+    public void Update()
+    {
+        if (falling)
+        {
+            gameObject.transform.Translate(Vector3.down * fallingSpeed * Time.deltaTime);
+            gameObject.transform.Rotate(Vector3.forward * 0.1f * Time.deltaTime);
+
+            if (!hiddenBody && gameObject.transform.position.y <= pitTrap.transform.position.y)
+            {
+                gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+            }
+            if (gameObject.transform.localPosition.y < -0.988f)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 }

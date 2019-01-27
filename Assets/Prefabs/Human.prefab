@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6182269447906010936}
   - component: {fileID: 6182269447906010943}
+  - component: {fileID: 3090953157541702360}
   - component: {fileID: 6559005786190849197}
   - component: {fileID: 6182269447906010937}
   - component: {fileID: 6032597897607204590}
@@ -83,6 +84,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!50 &3090953157541702360
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6182269447906010941}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!70 &6559005786190849197
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -112,9 +134,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   male: 0
+  falling: 0
+  pitTrap: {fileID: 0}
   speed: 3
   patience: 3
-  corpse: {fileID: 807787561, guid: 3f508e2bfa03daa448c413a94f59b7f9, type: 3}
 --- !u!114 &6032597897607204590
 MonoBehaviour:
   m_ObjectHideFlags: 0

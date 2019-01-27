@@ -36,8 +36,9 @@ public class Trap : MonoBehaviour {
 
 
 	private void OnTriggerStay2D(Collider2D collision) {
-		//If collided with human
-		if (collision.gameObject.GetComponent<Human>() != null && activated) {
+        Human human = collision.gameObject.GetComponent<Human>();
+        //If collided with human
+        if (human != null && activated) {
 			collision.gameObject.GetComponent<Human>().Die();
 			bloody = true;
 			spriteRenderer.sprite = bloodyActivatedSprite;
