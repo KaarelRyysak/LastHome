@@ -23,6 +23,11 @@ public class Roomba : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
+		StartCoroutine(DelayedClick());
+	}
+
+	IEnumerator DelayedClick() {
+		yield return null;
 		hasBeenClicked = !hasBeenClicked;
 	}
 
