@@ -2388,14 +2388,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   humanPrefab: {fileID: 6182269447906010937, guid: b3329cbf5e6015447a472db5f38ac811,
     type: 3}
-  waves:
-  - Count: 4
-    Cooldown: 3
-  - Count: 6
-    Cooldown: 3
-  - Count: 10
-    Cooldown: 6
   numOfAlive: 0
+  peopleSpawnedLastWave: 5
+  peopleToSpawn: 0
+  cooldownBetweenSpawns: 1
   maleHeads:
   - {fileID: 21300000, guid: 61f12d643d9ea1e42a2c2e15f5de9ef2, type: 3}
   - {fileID: 21300000, guid: ac134ce7b832e614b89225675a35d868, type: 3}
