@@ -26,15 +26,47 @@ public class Human : MonoBehaviour {
 		house = House.instance;
 		trust = Trust.instance;
 		currentRoom = house.StartRoom;
+		currentRoom.humans.Add(this);
+		OnEnterRoom();
 
 		StartCoroutine(AI());
+	}
+
+	void UpdateRoom(Room room) {
+		currentRoom.humans.Remove(this);
+		currentRoom = room;
+		currentRoom.humans.Add(this);
+		OnEnterRoom();
+	}
+
+	void OnEnterRoom() {
+		//Check for dead humans
+		foreach (Human human in currentRoom.humans) {
+
+		}
+
+		//Check for active traps
+	}
+
+	public void Repulse() {
+		StopAllCoroutines();
+		StartCoroutine(Flee());
 	}
 
 	IEnumerator AI() {
 		while (true) {
 			yield return Idle();
-			yield return PathToRoom();
+			yield return PathToRoom(house.RandomRoom);
 		}
+	}
+
+	IEnumerator Flee() {
+		Room target = house.RandomRoom;
+		while (target == currentRoom) {
+			target = house.RandomRoom;
+		}
+		yield return PathToRoom(target);
+		StartCoroutine(AI());
 	}
 
 	IEnumerator Idle() {
@@ -46,9 +78,7 @@ public class Human : MonoBehaviour {
 		}
 	}
 
-	IEnumerator PathToRoom() {
-		Room target = house.RandomRoom;
-
+	IEnumerator PathToRoom(Room target) {
 		//Extend path to include standing before and after doors
 		Vector3 location = transform.position;
 		foreach (Room room in house.GetPath(currentRoom, target, false)) {
@@ -69,7 +99,7 @@ public class Human : MonoBehaviour {
 			}
 
 			yield return LerpMove(transform.position, Vector3.Lerp(currentRoom.transform.position, room.transform.position, 0.6f));
-			currentRoom = room;
+			UpdateRoom(room);
 		}
 	}
 
