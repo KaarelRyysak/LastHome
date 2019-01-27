@@ -60,11 +60,22 @@ public class PitTrap : BaseTrap {
 				human.transform.position = newPos;
 			}
 		}
+        if (collision.gameObject.tag == "Roomba")
+        {
+            Roomba roomba = collision.gameObject.GetComponent<Roomba>();
+            roomba.bodyCarried = false;
+        }
+        else
+        {
+            collision.gameObject.GetComponent<Collider2D>().enabled = false;
+        }
 	}
 
 	private void Drop(Human human) {
-        
-        human.Die();
+        if (!human.dead)
+        {
+            human.Die();
+        }
 
         human.transform.Rotate(new Vector3(0, 0, -90));
 
