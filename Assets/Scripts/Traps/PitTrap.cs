@@ -54,7 +54,8 @@ public class PitTrap : BaseTrap {
 			Vector3 thisPos = gameObject.transform.position;
 
 			if (Vector3.Magnitude(humanpos - newPos) < 0.1f) {
-				Drop(human);
+                collision.gameObject.GetComponent<Collider2D>().enabled = false;
+                Drop(human);
 
 			} else {
 				human.transform.position = newPos;
@@ -67,7 +68,6 @@ public class PitTrap : BaseTrap {
         }
         else
         {
-            collision.gameObject.GetComponent<Collider2D>().enabled = false;
             collision.gameObject.transform.parent = border.transform;
         }
 	}
