@@ -11,21 +11,19 @@ public class Trap : BaseTrap {
 	void Awake() {
 		spriteRenderer = GetComponent<SpriteRenderer>();
 
-		//Inactive on startup
-		activated = false;
 		spriteRenderer.sprite = disabledSprite;
 	}
 
 	private void OnMouseDown() {
 		//Toggle active on click
-		activated = !activated;
+		Activated = !Activated;
 
 		//Change sprite
-		if (activated && !bloody) {
+		if (Activated && !bloody) {
 			spriteRenderer.sprite = activatedSprite;
-		} else if (!activated && !bloody) {
+		} else if (!Activated && !bloody) {
 			spriteRenderer.sprite = disabledSprite;
-		} else if (activated && bloody) {
+		} else if (Activated && bloody) {
 
 			spriteRenderer.sprite = bloodyActivatedSprite;
 		} else {
@@ -37,7 +35,7 @@ public class Trap : BaseTrap {
 	private void OnTriggerStay2D(Collider2D collision) {
         Human human = collision.gameObject.GetComponent<Human>();
         //If collided with human
-        if (human != null && activated) {
+        if (human != null && Activated) {
 			collision.gameObject.GetComponent<Human>().Die();
 			bloody = true;
 			spriteRenderer.sprite = bloodyActivatedSprite;

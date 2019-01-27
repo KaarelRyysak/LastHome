@@ -10,7 +10,7 @@ public class House : MonoBehaviour {
 	public int height, width;
 	public int roomSize;
 	public int startY, startX;
-	Room[,] rooms;
+	public Room[,] rooms;
 	public Dictionary<Pair<Room>, Door> roomsToDoor = new Dictionary<Pair<Room>, Door>();
 	public Dictionary<Door, Pair<Room>> doorToRooms = new Dictionary<Door, Pair<Room>>();
 
