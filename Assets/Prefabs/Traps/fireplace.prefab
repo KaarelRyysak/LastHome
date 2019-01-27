@@ -142,6 +142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePrefab: {fileID: 4509382321282552919, guid: 3b26ab4e1989306489e180d1743edd1b,
     type: 3}
+  ashPrefab: {fileID: 7836552302156279745, guid: 0c2b63197968af54da6d6750fe7f8933,
+    type: 3}
 --- !u!1001 &3696597499740294936
 PrefabInstance:
   m_ObjectHideFlags: 0

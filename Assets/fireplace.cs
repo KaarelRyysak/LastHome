@@ -41,9 +41,7 @@ public class fireplace : MonoBehaviour
         //If collided with human
         if (human != null && activated)
         {
-            GameObject fire2 = GameObject.Instantiate(firePrefab, human.transform.position, human.transform.rotation, human.transform);
-            fire2.transform.Rotate(new Vector3(0, 0, 90));
+            human.StartCoroutine(human.OnFire(firePrefab, ashPrefab));
         }
-        human.StartCoroutine(human.OnFire(firePrefab, ashPrefab));
     }
 }
