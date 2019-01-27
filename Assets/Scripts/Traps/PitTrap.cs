@@ -36,14 +36,20 @@ public class PitTrap : BaseTrap {
 		Human human = collision.gameObject.GetComponent<Human>();
 		//If collided with human
 		if (human != null && Activated && !human.falling) {
+            Transform shadow = human.gameObject.transform.Find("Shadow");
+            if (shadow != null)
+            {
+                Debug.Log(shadow);
+                Destroy(shadow.gameObject);
+            }
+            human.StopAllCoroutines();
 
-			SortLayer sortLayer = human.gameObject.GetComponent<SortLayer>();
+            SortLayer sortLayer = human.gameObject.GetComponent<SortLayer>();
 			sortLayer.offset = -6000;
-			human.gameObject.transform.GetChild(0).GetComponent<SortParent>().offset = -6001;
+			human.gameObject.transform.GetChild(0).GetComponent<SortParent>().offset = -1;
 
 			Vector3 humanpos = human.transform.position;
 			Vector3 newPos = Vector3.Lerp(humanpos, gameObject.transform.position, 0.1f);
-			human.StopAllCoroutines();
 
 			Vector3 thisPos = gameObject.transform.position;
 
@@ -57,9 +63,7 @@ public class PitTrap : BaseTrap {
 	}
 
 	private void Drop(Human human) {
-
-        human.StartCoroutine(human.Fall(border));
-
+        
         human.Die();
 
         human.transform.Rotate(new Vector3(0, 0, -90));

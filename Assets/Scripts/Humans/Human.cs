@@ -282,6 +282,7 @@ public class Human : MonoBehaviour
         yield return new WaitForSeconds(Random.Range(3f, 4f));
         GameObject ash = GameObject.Instantiate(ashPrefab, gameObject.transform.position, gameObject.transform.rotation);
         ash.transform.Rotate(0, 0, -90);
+        ash.GetComponent<SpriteRenderer>().sortingOrder = -9998;
         Destroy(gameObject);
 
 
