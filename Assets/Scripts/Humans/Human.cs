@@ -183,6 +183,7 @@ public class Human : MonoBehaviour {
 	}
 
 	public IEnumerator Fall(GameObject pitTrap) {
+        gameObject.transform.parent = pitTrap.transform;
 		falling = true;
 		while (gameObject.transform.position.y > pitTrap.transform.position.y) {
 			gameObject.transform.Translate(Vector3.down * fallingSpeed * Time.deltaTime);

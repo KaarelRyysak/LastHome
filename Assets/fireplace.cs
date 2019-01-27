@@ -42,6 +42,7 @@ public class fireplace : MonoBehaviour
         {
             GameObject fire2 = GameObject.Instantiate(firePrefab, human.transform.position, human.transform.rotation, human.transform);
             fire2.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+            fire2.transform.Rotate(new Vector3(0, 0, 90));
         }
     }
 }
